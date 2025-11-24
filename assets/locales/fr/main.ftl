@@ -55,8 +55,8 @@ components-index-updated = L'index des composants a été mis à jour
 
 
 launch = Lancer
-migrate-folders = Migrate folders
-migrate-folders-tooltip = Update game folders structure
+migrate-folders = Migrer les dossiers
+migrate-folders-tooltip = Metre à jour la strucure des dossiers du jeu
 apply-patch = Appliquer le patch
 disable-telemetry = Disable telemetry
 download-wine = Télécharger wine

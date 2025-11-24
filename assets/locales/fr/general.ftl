@@ -7,22 +7,22 @@ update-background-description = Télécharger l'image de fond du launcher offici
 launcher-language = Langue du launcher
 launcher-language-description = S'applique après un redémarrage
 
-game-edition = Game edition
+game-edition = Édition du jeu
 global = Global
-china = China
+china = Chine
 
-game-environment = Game environment
-game-environment-description = Get specific features like additional payment methods
+game-environment = Environment du jeu
+game-environment-description = Obtenir des fonctionalitées spécifique tel que la méthode de paiement
 
 game-voiceovers = Voiceover en jeu
-game-voiceovers-description = List of downloaded game voiceovers. You can select them in the game settings
+game-voiceovers-description = Liste des voix du jeu téléchargés. Vous pouvez en séléctioné dans les paramètres en jeu
 english = Anglais
 japanese = Japonais
 korean = Coréen
 chinese = Chinois
 
-migrate-installation = Migrate installation
-migrate-installation-description = Open special window where you can change your game installation folder
+migrate-installation = Migrer l'installation
+migrate-installation-description = Ouvrir une fennêtre spécifique où vous pouvez changer le dossier d'installation de votre jeu
 repair-game = Réparer le jeu
 
 status = Statut
@@ -35,7 +35,7 @@ game-update-available = Mise à jour du jeu disponible : {$old} -> {$new}
 game-outdated = La version du jeu installée est trop ancienne et ne peut pas être mise à jour. Dernière version : {$latest}
 
 player-patch-version = Player patch version
-player-patch-version-description = Main patch that lets you play the game on Linux
+player-patch-version-description = Patch principal qui vous permet de jouer au jeu sur Linux
 
 patch-not-available = patch non disponible
 patch-not-available-tooltip = Impossible d'accéder aux serveurs de patch
@@ -62,9 +62,9 @@ launcher-behavior = Launcher behavior
 launcher-behavior-description = What should launcher window do when it starts the game
 
 wine-tools = Wine tools
-command-line = Command line
-registry-editor = Registry editor
-explorer = Explorer
-task-manager = Task manager
+command-line = Invite de commande
+registry-editor = Éditeur de registres
+explorer = Exploreur de fichiers
+task-manager = Géstionnaire des taches
 configuration = Configuration
-debugger = Debugger
+debugger = Debuggeur

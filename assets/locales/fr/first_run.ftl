@@ -25,9 +25,9 @@ tos-violation-warning-message =
 
 tos-dialog-title = Are you sure you understand what we want to say?
 tos-dialog-message =
-    1. Don't publish any information about this project
-    2. Don't abuse it by using some modded clients and so
-    3. Ask questions exceptionally in our discord or matrix server
+    1. Ne pas publier d'informations à propos de ce projet.
+    2. Ne pas abuser de ce dernier en utilisant des modifications de client ou autre.
+    3. Posez des question exceptionelement dans notre serveur Matrix.
 
 dependencies = Dépendances
 missing-dependencies-title = Il vous manque des dépendances !

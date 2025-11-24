@@ -3,24 +3,24 @@ game-folder-opening-error = Impossible d'ouvrir l'emplacement du jeu
 config-file-opening-error = Impossible d'ouvrir le fichier de configuration
 debug-file-opening-error = Impossible d'ouvrir le fichier débug
 
-wish-url-search-failed = No wishes url found
-wish-url-opening-error = Could not open wishes url
+wish-url-search-failed = Aucune URL de veux trouvé
+wish-url-opening-error = Impossible d'ouvrir l'URL de veux
 
-wine-run-error = Failed to run {$executable} executable using wine
+wine-run-error = Le lancement de {$executable} avec wine à échoué.
 
 game-launching-failed = Impossible de lancer le jeu
 failed-get-selected-wine = Impossible de récupérer la version de wine sélectionnée
 downloading-failed = Le téléchargement a échoué
 unpacking-failed = L'extraction a échoué
 
-kill-game-process-failed = Failed to kill the game's process
+kill-game-process-failed = Impossible d'arrêter le processus du jeu.
 
 game-file-repairing-error = Impossible de réparer les fichiers du jeu
 integrity-files-getting-error = Impossible de récupérer les fichiers d'intégrité du jeu
 
 background-downloading-failed = Impossible de télécharger l'image de fond
-components-index-sync-failed = Failed to sync components index
-components-index-verify-failed = Failed to verify components index
+components-index-sync-failed = La syncronisation de l'index des composants à échoué.
+components-index-verify-failed = La verification de l'index des compisants à échoué.
 config-update-error = Impossible d'enregistrer la configuration
 wine-prefix-update-failed = Impossible de mettre à jour le préfix wine
 dxvk-install-failed = Impossible d'installer DXVK
@@ -46,11 +46,11 @@ game-patching-error = Le patch du jeu a échoué
 
 # Disable telemetry
 
-telemetry-servers-disabling-error = Failed to disable telemetry servers
+telemetry-servers-disabling-error = La desactivation des serveurs de télémétrie à échoué!
 
 # Sandbox
 
-documentation-url-open-failed = Failed to open documentation URL
+documentation-url-open-failed = Impossible d'ouvrir l'URL des documentations.
 
 # Game
 
