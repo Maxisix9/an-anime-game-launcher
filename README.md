@@ -35,7 +35,7 @@ These packages are officially supported by the An Anime Team, and we try to ensu
 
 | Format | Wiki | Source | Distributions | Maintainer |
 | - | - | - | - | - |
-| Flatpak | [wiki](https://github.com/an-anime-team/an-anime-game-launcher/wiki/Installation#-any-distribution-flatpak) | [flatpak-builds](https://github.com/an-anime-team/flatpak-builds) | Any (Fedora, Pop!_OS, SteamOS / Steam Deck, etc.) | Luna (available in discord) |
+| Flatpak | [wiki](https://github.com/an-anime-team/an-anime-game-launcher/wiki/Installation#-any-distribution-flatpak) | [Flathub](https://flathub.org/apps/moe.launcher.an-anime-game-launcher) | Any (Fedora, Pop!_OS, SteamOS / Steam Deck, etc.) | NelloKudo |
 | RPM | [wiki](https://github.com/an-anime-team/an-anime-game-launcher/wiki/Installation#-fedora-rpm) | [AAGL](https://build.opensuse.org/repositories/home:Maroxy:AAT-Apps/AAGL) * | Fedora, OpenSUSE | Maroxy (second discord admin) |
 
 > [!NOTE]
