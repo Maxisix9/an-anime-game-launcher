@@ -1,5 +1,5 @@
 game-settings-description = จัดการการตั้งค่าในเกมและเซสชันบัญชี
-sandbox-settings-description = รันเกมในแซนด์บ็อกซ์ คล้ายกับที่ Flatpak ทำ
+sandbox-settings-description = รันเกมในแซนด์บ็อกซ์ คล้ายกับ Flatpak
 environment-settings-description = ระบุตัวแปรสภาวะแวดล้อมและคำสั่งเปิดเกม
 
 wine = Wine
@@ -38,13 +38,13 @@ gamescope = Gamescope
 gamescope-description = Gamescope เป็นเครื่องมือจาก Valve ที่ช่วยให้เกมทำงานในอินสแตนซ์ Xwayland ที่แยกจากระบบ และรองรับ GPU ของ AMD, Intel และ Nvidia
 
 discord-rpc = Discord RPC
-discord-rpc-description = Discord RPC อนุญาตให้คุณให้ข้อมูล Discord ที่คุณกำลังเล่นเกมอยู่เพื่อแจ้งให้เพื่อนของคุณทราบ
+discord-rpc-description = อนุญาตให้ข้อมูลกับ Discord ที่คุณกำลังเล่นเกมอยู่
 icon = ไอคอน
 title = หัวข้อ
 description = คำอธิบาย
 
 fps-unlocker = FPS Unlocker
-fps-unlocker-description = ลบข้อจำกัดในการเรนเดอร์เฟรมโดยการปรับเปลี่ยนหน่วยความจำของเกม สามารถตรวจจับได้โดยระบบการป้องกันการโกงของเกม
+fps-unlocker-description = ลบข้อจำกัด FPS โดยการปรับเปลี่ยนหน่วยความจำของเกม สามารถตรวจจับได้โดยระบบการป้องกันโกงของเกม
 
 enabled = เปิดใช้งาน
 
