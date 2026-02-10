@@ -127,6 +127,7 @@ pub enum GeneralAppMsg {
     UpdateDownloadedDxvk,
 
     RepairGame,
+    RemakePrefix,
 
     OpenMainPage,
     OpenComponentsPage,
@@ -345,6 +346,14 @@ impl SimpleAsyncComponent for GeneralApp {
                         set_label: &tr!("repair-game"),
 
                         connect_clicked => GeneralAppMsg::RepairGame
+                    },
+
+                    gtk::Button {
+                        set_label: &tr!("remake-prefix"),
+
+                        add_css_class: "destructive-action",
+
+                        connect_clicked => GeneralAppMsg::RemakePrefix
                     }
                 }
             },
@@ -639,6 +648,10 @@ impl SimpleAsyncComponent for GeneralApp {
 
             GeneralAppMsg::RepairGame => {
                 sender.output(Self::Output::RepairGame).unwrap();
+            }
+
+            GeneralAppMsg::RemakePrefix => {
+                sender.output(Self::Output::RemakePrefix).unwrap();
             }
 
             // Don't care about it, don't want to rewrite everything.
