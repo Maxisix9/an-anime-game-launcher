@@ -81,6 +81,7 @@ pub enum AppMsg {
 
     OpenPreferences,
     RepairGame,
+    RemakePrefix,
 
     PredownloadUpdate,
     PerformAction,
@@ -1140,6 +1141,29 @@ impl SimpleComponent for App {
 
             AppMsg::RepairGame => {
                 repair_game::repair_game(sender, self.progress_bar.sender().to_owned())
+            }
+
+            AppMsg::RemakePrefix => {
+                let config = Config::get().unwrap();
+                let prefix = config.game.wine.prefix.clone();
+
+                if prefix.exists() {
+                    if let Err(err) = std::fs::remove_dir_all(&prefix) {
+                        tracing::error!("Failed to remove wine prefix: {err}");
+
+                        sender.input(AppMsg::Toast {
+                            title: tr!("wine-prefix-update-failed"),
+                            description: Some(err.to_string())
+                        });
+
+                        return;
+                    }
+                }
+
+                sender.input(AppMsg::UpdateLauncherState {
+                    perform_on_download_needed: false,
+                    show_status_page: true
+                });
             }
 
             #[allow(unused_must_use)]
