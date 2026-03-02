@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated Japanese, French and Thai locales
 
+### Fixed
+
+- Fixed parts of the game update function to handle new files
+
 ## [3.18.0] - 12.11.2025
 
 ### Fixed
