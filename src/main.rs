@@ -2,19 +2,14 @@ use std::path::PathBuf;
 use std::sync::atomic::{AtomicBool, Ordering};
 
 use relm4::prelude::*;
-
 use anime_launcher_sdk::config::ConfigExt;
 use anime_launcher_sdk::genshin::config::{Config, Schema};
-
 use anime_launcher_sdk::genshin::states::LauncherState;
 use anime_launcher_sdk::genshin::consts::*;
-
 use anime_launcher_sdk::anime_game_core::prelude::*;
 use anime_launcher_sdk::anime_game_core::genshin::prelude::*;
-
 use anime_launcher_sdk::sessions::SessionsExt;
 use anime_launcher_sdk::genshin::sessions::Sessions;
-
 use tracing_subscriber::prelude::*;
 use tracing_subscriber::filter::*;
 
@@ -111,7 +106,8 @@ fn main() -> anyhow::Result<()> {
 
     // Create launcher folder if it doesn't exist.
     if !LAUNCHER_FOLDER.exists() {
-        std::fs::create_dir_all(LAUNCHER_FOLDER.as_path()).expect("Failed to create launcher folder");
+        std::fs::create_dir_all(LAUNCHER_FOLDER.as_path())
+            .expect("Failed to create launcher folder");
 
         // This one is kinda critical but well, I can't do anything about it
         std::fs::write(FIRST_RUN_FILE.as_path(), "").expect("Failed to create .first-run file");
@@ -127,8 +123,7 @@ fn main() -> anyhow::Result<()> {
 
     // Create cache folder if it doesn't exist.
     if !CACHE_FOLDER.exists() {
-        std::fs::create_dir_all(CACHE_FOLDER.as_path())
-            .expect("Failed to create cache folder");
+        std::fs::create_dir_all(CACHE_FOLDER.as_path()).expect("Failed to create cache folder");
     }
 
     // Force debug output
@@ -149,9 +144,9 @@ fn main() -> anyhow::Result<()> {
     // Parse arguments
     for i in 0..args.len() {
         match args[i].as_str() {
-            "--debug"              => force_debug        = true,
-            "--run-game"           => run_game           = true,
-            "--just-run-game"      => just_run_game      = true,
+            "--debug" => force_debug = true,
+            "--run-game" => run_game = true,
+            "--just-run-game" => just_run_game = true,
             "--no-verbose-tracing" => no_verbose_tracing = true,
 
             "--session" => {
@@ -159,7 +154,7 @@ fn main() -> anyhow::Result<()> {
                 if let Some(session) = args.get(i + 1) {
                     Sessions::set_current(session.to_owned())?;
                 }
-            },
+            }
 
             arg => gtk_args.push(arg.to_string())
         }
@@ -176,11 +171,11 @@ fn main() -> anyhow::Result<()> {
             }
         })
         .with_filter(filter_fn(move |metadata| {
-            !metadata.target().contains("rustls") &&
-            !metadata.target().contains("reqwest") &&
-            !metadata.target().contains("h2") &&
-            !metadata.target().contains("hyper_util") &&
-            !no_verbose_tracing
+            !metadata.target().contains("rustls")
+                && !metadata.target().contains("reqwest")
+                && !metadata.target().contains("h2")
+                && !metadata.target().contains("hyper_util")
+                && !no_verbose_tracing
         }));
 
     // Prepare debug file logger
@@ -191,10 +186,10 @@ fn main() -> anyhow::Result<()> {
         .with_ansi(false)
         .with_writer(std::sync::Arc::new(file))
         .with_filter(filter_fn(|metadata| {
-            !metadata.target().contains("rustls") &&
-            !metadata.target().contains("reqwest") &&
-            !metadata.target().contains("h2") &&
-            !metadata.target().contains("hyper_util")
+            !metadata.target().contains("rustls")
+                && !metadata.target().contains("reqwest")
+                && !metadata.target().contains("h2")
+                && !metadata.target().contains("hyper_util")
         }));
 
     tracing_subscriber::registry()
@@ -222,7 +217,11 @@ fn main() -> anyhow::Result<()> {
     gtk::glib::set_program_name(Some("An Anime Game Launcher"));
 
     // Set UI language
-    let lang = CONFIG.launcher.language.parse().expect("Wrong language format used in config");
+    let lang = CONFIG
+        .launcher
+        .language
+        .parse()
+        .expect("Wrong language format used in config");
 
     i18n::set_lang(lang).expect("Failed to set launcher language");
 
@@ -231,18 +230,16 @@ fn main() -> anyhow::Result<()> {
     // Run FirstRun window if .first-run file persist
     if FIRST_RUN_FILE.exists() {
         // Create the app
-        let app = RelmApp::new(APP_ID)
-            .with_args(gtk_args);
+        let app = RelmApp::new(APP_ID).with_args(gtk_args);
 
         // Show first run window
         app.run::<FirstRunApp>(());
     }
-
     // Run the app if everything's ready
     else {
         if run_game || just_run_game {
-            let state = LauncherState::get_from_config(|_| {})
-                .expect("Failed to get launcher state");
+            let state =
+                LauncherState::get_from_config(|_| {}).expect("Failed to get launcher state");
 
             match state {
                 LauncherState::Launch => {
@@ -251,7 +248,9 @@ fn main() -> anyhow::Result<()> {
                     return Ok(());
                 }
 
-                LauncherState::PredownloadAvailable { .. } if just_run_game => {
+                LauncherState::PredownloadAvailable {
+                    ..
+                } if just_run_game => {
                     anime_launcher_sdk::genshin::game::run().expect("Failed to run the game");
 
                     return Ok(());
@@ -262,8 +261,7 @@ fn main() -> anyhow::Result<()> {
         }
 
         // Create the app
-        let app = RelmApp::new(APP_ID)
-            .with_args(gtk_args);
+        let app = RelmApp::new(APP_ID).with_args(gtk_args);
 
         // Show main window
         app.run::<App>(());
