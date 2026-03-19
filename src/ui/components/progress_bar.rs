@@ -148,12 +148,28 @@ impl SimpleAsyncComponent for ProgressBar {
                         SophonInstallerUpdate::CheckingFreeSpace(_)
                     ) => self.caption = Some(tr!("checking-free-space")),
 
+                    // checking files before downlaod/update
+                    DiffUpdate::SophonInstallerUpdate(SophonInstallerUpdate::CheckingFiles { .. })
+                    | DiffUpdate::SophonPatcherUpdate(SophonPatcherUpdate::CheckingFilesStarted)
+                    => {
+                        self.caption = Some(tr!("checking-files"));
+                        self.display_fraction = false;
+                    },
+                    
+                    DiffUpdate::SophonInstallerUpdate(SophonInstallerUpdate::CheckingFilesProgress { passed, total })
+                    => {
+                        self.fraction = passed as f64 / total as f64;
+                    }
+
                     // download started
                     DiffUpdate::InstallerUpdate(InstallerUpdate::DownloadingStarted(_))
                     | DiffUpdate::SophonPatcherUpdate(SophonPatcherUpdate::DownloadingStarted(_))
                     | DiffUpdate::SophonInstallerUpdate(
-                        SophonInstallerUpdate::DownloadingStarted(_)
-                    ) => self.caption = Some(tr!("downloading")),
+                        SophonInstallerUpdate::DownloadingStarted{..}
+                    ) => {
+                        self.caption = Some(tr!("downloading"));
+                        self.display_fraction = true;
+                    },
 
                     DiffUpdate::InstallerUpdate(InstallerUpdate::UpdatingPermissionsStarted(_)) => {
                         self.caption = Some(tr!("updating-permissions"))
@@ -249,9 +265,7 @@ impl SimpleAsyncComponent for ProgressBar {
                     DiffUpdate::SophonPatcherUpdate(SophonPatcherUpdate::FileHashCheckFailed(
                         path
                     ))
-                    | DiffUpdate::SophonInstallerUpdate(
-                        SophonInstallerUpdate::FileHashCheckFailed(path)
-                    ) => tracing::error!("File hash check failed on {path:?}"),
+                    => tracing::error!("File hash check failed on {path:?}"),
 
                     // sophon downlaod progress reports
                     DiffUpdate::SophonInstallerUpdate(
