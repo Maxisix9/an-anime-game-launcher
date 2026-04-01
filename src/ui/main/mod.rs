@@ -415,7 +415,7 @@ impl SimpleComponent for App {
 
                                                 Some(LauncherState::FolderMigrationRequired { .. }) |
                                                 Some(LauncherState::WineNotInstalled) |
-                                                Some(LauncherState::PrefixNotExists) | 
+                                                Some(LauncherState::PrefixNotExists) |
                                                 Some(LauncherState::DxvkNotInstalled) => "document-save-symbolic",
 
                                                 Some(LauncherState::GameUpdateAvailable(_)) |

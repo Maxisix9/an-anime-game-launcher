@@ -1,20 +1,11 @@
 use relm4::prelude::*;
-
-use relm4::factory::{
-    AsyncFactoryVecDeque,
-    AsyncFactoryComponent,
-    AsyncFactorySender
-};
-
+use relm4::factory::{AsyncFactoryComponent, AsyncFactorySender, AsyncFactoryVecDeque};
 use gtk::prelude::*;
 use adw::prelude::*;
-
 use anime_launcher_sdk::wincompatlib::prelude::*;
-
 use anime_launcher_sdk::config::ConfigExt;
 use anime_launcher_sdk::genshin::config::Config;
 use anime_launcher_sdk::genshin::config::schema::prelude::*;
-
 use anime_launcher_sdk::anime_game_core::genshin::consts::GameEdition;
 use anime_launcher_sdk::genshin::env_emulation::Environment;
 
@@ -24,7 +15,6 @@ use components::*;
 
 use crate::i18n::*;
 use crate::*;
-
 use super::main::PreferencesAppMsg;
 
 #[derive(Debug)]
@@ -36,10 +26,10 @@ struct VoicePackageComponent {
 
 #[relm4::factory(async)]
 impl AsyncFactoryComponent for VoicePackageComponent {
+    type CommandOutput = ();
     type Init = (VoiceLocale, bool);
     type Input = GeneralAppMsg;
     type Output = GeneralAppMsg;
-    type CommandOutput = ();
     type ParentWidget = adw::ExpanderRow;
 
     view! {
@@ -83,7 +73,7 @@ impl AsyncFactoryComponent for VoicePackageComponent {
     async fn init_model(
         init: Self::Init,
         _index: &DynamicIndex,
-        _sender: AsyncFactorySender<Self>,
+        _sender: AsyncFactorySender<Self>
     ) -> Self {
         Self {
             locale: init.0,
@@ -95,8 +85,7 @@ impl AsyncFactoryComponent for VoicePackageComponent {
     async fn update(&mut self, msg: Self::Input, sender: AsyncFactorySender<Self>) {
         self.installed = !self.installed;
 
-        sender.output(msg)
-            .unwrap();
+        sender.output(msg).unwrap();
     }
 }
 
@@ -112,8 +101,8 @@ pub struct GeneralApp {
 #[allow(clippy::large_enum_variant)]
 #[derive(Debug, Clone)]
 pub enum GeneralAppMsg {
-    /// Supposed to be called automatically on app's run when the latest game version
-    /// was retrieved from the API
+    /// Supposed to be called automatically on app's run when the latest game
+    /// version was retrieved from the API
     SetGameDiff(Option<VersionDiff>),
 
     // If one ever wish to change it to accept VoiceLocale
@@ -536,7 +525,7 @@ impl SimpleAsyncComponent for GeneralApp {
     async fn init(
         _init: Self::Init,
         root: Self::Root,
-        sender: AsyncComponentSender<Self>,
+        sender: AsyncComponentSender<Self>
     ) -> AsyncComponentParts<Self> {
         tracing::info!("Initializing general settings");
 
@@ -551,13 +540,20 @@ impl SimpleAsyncComponent for GeneralApp {
 
             game_diff: None,
             style: CONFIG.launcher.style,
-            languages: SUPPORTED_LANGUAGES.iter().map(|lang| tr!(format_lang(lang).as_str())).collect()
+            languages: SUPPORTED_LANGUAGES
+                .iter()
+                .map(|lang| tr!(format_lang(lang).as_str()))
+                .collect()
         };
 
         for package in VoiceLocale::list() {
             model.voice_packages.guard().push_back((
                 *package,
-                CONFIG.game.voices.iter().any(|voice| VoiceLocale::from_str(voice) == Some(*package))
+                CONFIG
+                    .game
+                    .voices
+                    .iter()
+                    .any(|voice| VoiceLocale::from_str(voice) == Some(*package))
             ));
         }
 
@@ -566,7 +562,10 @@ impl SimpleAsyncComponent for GeneralApp {
 
         let widgets = view_output!();
 
-        AsyncComponentParts { model, widgets }
+        AsyncComponentParts {
+            model,
+            widgets
+        }
     }
 
     async fn update(&mut self, msg: Self::Input, sender: AsyncComponentSender<Self>) {
@@ -581,8 +580,16 @@ impl SimpleAsyncComponent for GeneralApp {
             GeneralAppMsg::AddVoicePackage(index) => {
                 if let Some(package) = self.voice_packages.get(index.current_index()) {
                     if let Ok(mut config) = Config::get() {
-                        if !config.game.voices.iter().any(|voice| VoiceLocale::from_str(voice) == Some(package.locale)) {
-                            config.game.voices.push(package.locale.to_code().to_string());
+                        if !config
+                            .game
+                            .voices
+                            .iter()
+                            .any(|voice| VoiceLocale::from_str(voice) == Some(package.locale))
+                        {
+                            config
+                                .game
+                                .voices
+                                .push(package.locale.to_code().to_string());
 
                             Config::update(config);
 
@@ -598,17 +605,29 @@ impl SimpleAsyncComponent for GeneralApp {
                     if let Ok(mut config) = Config::get() {
                         package.sensitive = false;
 
-                        config.game.voices.retain(|voice| VoiceLocale::from_str(voice) != Some(package.locale));
+                        config
+                            .game
+                            .voices
+                            .retain(|voice| VoiceLocale::from_str(voice) != Some(package.locale));
 
                         Config::update(config.clone());
 
-                        let package = VoicePackage::with_locale(package.locale, config.launcher.edition).unwrap();
-                        let game_path = config.game.path.for_edition(config.launcher.edition).to_path_buf();
+                        let package =
+                            VoicePackage::with_locale(package.locale, config.launcher.edition)
+                                .unwrap();
+                        let game_path = config
+                            .game
+                            .path
+                            .for_edition(config.launcher.edition)
+                            .to_path_buf();
 
                         if package.is_installed_in(&game_path) {
                             std::thread::spawn(move || {
                                 if let Err(err) = package.delete_in(game_path) {
-                                    tracing::error!("Failed to delete voice package: {:?}", package.locale());
+                                    tracing::error!(
+                                        "Failed to delete voice package: {:?}",
+                                        package.locale()
+                                    );
 
                                     sender.input(GeneralAppMsg::Toast {
                                         title: tr!("voice-package-deletion-error"),
@@ -616,12 +635,11 @@ impl SimpleAsyncComponent for GeneralApp {
                                     });
                                 }
 
-                                sender.input(GeneralAppMsg::SetVoicePackageSensitivity(index, true));
+                                sender
+                                    .input(GeneralAppMsg::SetVoicePackageSensitivity(index, true));
                                 sender.output(PreferencesAppMsg::UpdateLauncherState);
                             });
-                        }
-
-                        else {
+                        } else {
                             sender.input(GeneralAppMsg::SetVoicePackageSensitivity(index, true));
                         }
                     }
@@ -635,13 +653,15 @@ impl SimpleAsyncComponent for GeneralApp {
             }
 
             GeneralAppMsg::UpdateDownloadedWine => {
-                self.components_page.sender()
+                self.components_page
+                    .sender()
                     .send(ComponentsPageMsg::UpdateDownloadedWine)
                     .unwrap();
             }
 
             GeneralAppMsg::UpdateDownloadedDxvk => {
-                self.components_page.sender()
+                self.components_page
+                    .sender()
                     .send(ComponentsPageMsg::UpdateDownloadedDxvk)
                     .unwrap();
             }
@@ -657,20 +677,22 @@ impl SimpleAsyncComponent for GeneralApp {
             // Don't care about it, don't want to rewrite everything.
             #[allow(static_mut_refs)]
             GeneralAppMsg::OpenMainPage => unsafe {
-                PREFERENCES_WINDOW.as_ref()
+                PREFERENCES_WINDOW
+                    .as_ref()
                     .unwrap_unchecked()
                     .widget()
                     .pop_subpage();
-            }
+            },
 
             // Don't care about it, don't want to rewrite everything.
             #[allow(static_mut_refs)]
             GeneralAppMsg::OpenComponentsPage => unsafe {
-                PREFERENCES_WINDOW.as_ref()
+                PREFERENCES_WINDOW
+                    .as_ref()
                     .unwrap_unchecked()
                     .widget()
                     .push_subpage(self.components_page.widget());
-            }
+            },
 
             GeneralAppMsg::UpdateLauncherStyle(style) => {
                 if style == LauncherStyle::Classic && !KEEP_BACKGROUND_FILE.exists() {
@@ -702,7 +724,10 @@ impl SimpleAsyncComponent for GeneralApp {
 
                 if let Ok(Some(wine)) = config.get_selected_wine() {
                     let result = wine
-                        .to_wine(config.components.path, Some(config.game.wine.builds.join(&wine.name)))
+                        .to_wine(
+                            config.components.path,
+                            Some(config.game.wine.builds.join(&wine.name))
+                        )
                         .with_prefix(config.game.wine.prefix)
                         .with_loader(WineLoader::Current)
                         .with_arch(WineArch::Win64)
@@ -710,9 +735,7 @@ impl SimpleAsyncComponent for GeneralApp {
 
                     if let Err(err) = result {
                         sender.input(GeneralAppMsg::Toast {
-                            title: tr!("wine-run-error", {
-                                "executable" = executable.join(" ")
-                            }),
+                            title: tr!("wine-run-error", { "executable" = executable.join(" ") }),
                             description: Some(err.to_string())
                         });
 
@@ -721,8 +744,14 @@ impl SimpleAsyncComponent for GeneralApp {
                 }
             }
 
-            GeneralAppMsg::Toast { title, description } => {
-                let _ = sender.output(Self::Output::Toast { title, description });
+            GeneralAppMsg::Toast {
+                title,
+                description
+            } => {
+                let _ = sender.output(Self::Output::Toast {
+                    title,
+                    description
+                });
             }
         }
     }
