@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added "Remake prefix" button
+- Added support for animated launcher background
 
 ### Changed
 
@@ -20,6 +21,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed parts of the game update function to handle new files
 - Fixed a panic when the launcher folder is a broken symlink, the launcher will exit with an
   error message instead
+
+### Removed
+
+- Removed dependency on dwebp/libwebp-utils
 
 ## [3.18.0] - 12.11.2025
 
