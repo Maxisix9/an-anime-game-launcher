@@ -21,6 +21,7 @@ close = { $form ->
     [verb] Kapat
     *[noun] Kapalı
 }
+enable = Enable
 
 hide = { $form ->
     [verb] Gizle
@@ -74,6 +75,16 @@ download = İndir
 predownload-update =  Güncellemeyi önceden indir{$version}  ({$size})
 
 kill-game-process = Oyunu zorla kapat
+
+timeout-fix-detected = Driver error detected
+timeout-fix-detected-description =
+    The game exited within a few seconds and a driver error log was found.
+    This usually means the connection to Genshin's servers timed out.
+
+    Latest Spritz-based Wine runners can work around this via WINE_ENABLE_TIMEOUT_FIX=1.
+    Do you want to enable it?
+
+    You can also toggle this in Preferences -> Enhancements -> Wine.
 
 main-window--patch-unavailable-tooltip = Yama sunucuları kullanılamıyor ve istemci, oyunun yama durumunu doğrulayamıyor. Oyunu kendi sorumluluğunuzda çalıştırabilirsiniz
 main-window--patch-outdated-tooltip = Yama güncel değil veya hazırlık aşamasında, bu nedenle kullanım için uygun değil. Durumunu görmek için daha sonra geri dönün
