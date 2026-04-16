@@ -14,6 +14,9 @@ system = System
 borderless-window = Borderless window
 virtual-desktop = Virtual desktop
 
+timeout-fix = Enable timeout fix
+timeout-fix-description = Set WINE_ENABLE_TIMEOUT_FIX=1 to work around crash shortly after launch
+
 map-drive-c = Map drive C:
 map-drive-c-description = Automatically symlink drive_c folder from the wine prefix to the dosdevices
 
