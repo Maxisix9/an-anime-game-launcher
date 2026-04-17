@@ -18,7 +18,7 @@ pub fn import_game(sender: relm4::ComponentSender<App>, path: PathBuf) {
         }
     }
 
-    let config = match Config::get() {
+    let mut config = match Config::get() {
         Ok(c) => c,
         Err(err) => {
             sender.input(AppMsg::Toast {
