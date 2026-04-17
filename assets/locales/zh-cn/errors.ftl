@@ -67,4 +67,6 @@ discord-rpc-icon-download-failed = 下载 Discord RPC 图标失败
 
 # Import game
 
+import-game-invalid-path = Selected folder doesn't contain a valid game installation
+import-game-error = Failed to import game
 import-game-path-runtime = This path is temporary (Flatpak portal or runtime dir) and won't be valid after the session ends
