@@ -32,7 +32,7 @@ fn validate_path(path: &Path) -> ControlFlow<&'static str> {
     if let Ok(home) = std::env::var("HOME") {
         let home = PathBuf::from(home);
         if canonical == home || path == home {
-            return ControlFlow::Break("import-game-path-home");
+            return ControlFlow::Break("import-game-path-sensitive");
         }
     }
 
