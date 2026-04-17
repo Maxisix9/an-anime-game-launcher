@@ -10,7 +10,8 @@ fn validate_path(path: &Path) -> Result<(), &'static str> {
     for p in [path, canonical.as_path()] {
         let s = p.to_string_lossy();
 
-        // these are fuse-mounted by xdg-document-portal and vanish when the portal closes
+        // these are fuse-mounted by xdg-document-portal and vanish when the portal
+        // closes
         if s.starts_with("/run/user/") && s.contains("/doc/") {
             return Err("import-game-path-runtime");
         }
@@ -81,7 +82,7 @@ pub fn import_game(sender: relm4::ComponentSender<App>, path: PathBuf) {
     let mut config = config;
     match edition {
         GameEdition::Global => config.game.path.global = path,
-        GameEdition::China  => config.game.path.china  = path,
+        GameEdition::China => config.game.path.china = path
     }
     Config::update(config);
 
