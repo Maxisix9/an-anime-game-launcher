@@ -1,51 +1,21 @@
-use std::ops::ControlFlow;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 use crate::*;
 use super::{App, AppMsg};
 
-/// Checks whether the path is valid to import the game from
-/// Return [`ControlFlow::Continue`] if it's valid, and [`ControlFlow::Break`]
-/// with a locale key to display in the error message if it's not.
-fn validate_path(path: &Path) -> ControlFlow<&'static str> {
-    // resolve symlinks so /var/run -> /run etc. are caught
-    let canonical = path.canonicalize().unwrap_or_else(|_| path.to_path_buf());
-
-    for p in [path, canonical.as_path()] {
-        let s = p.to_string_lossy();
-
-        // these are fuse-mounted by xdg-document-portal and vanish when the portal
-        // closes
-        if s.starts_with("/run/user/") && s.contains("/doc/") {
-            return ControlFlow::Break("import-game-path-runtime");
-        }
-
-        // other dangerous prefixes (/run/media is removable drives, allow it)
-        for prefix in ["/run/", "/var/run/", "/proc/", "/sys/", "/dev/"] {
-            if s.starts_with(prefix) && !s.starts_with("/run/media/") {
-                return ControlFlow::Break("import-game-path-runtime");
-            }
-        }
-    }
-
-    // reject home directory itself, almost always an accidental pick
-    if let Ok(home) = std::env::var("HOME") {
-        let home = PathBuf::from(home);
-        if canonical == home || path == home {
-            return ControlFlow::Break("import-game-path-sensitive");
-        }
-    }
-
-    ControlFlow::Continue(())
-}
-
 pub fn import_game(sender: relm4::ComponentSender<App>, path: PathBuf) {
-    if let ControlFlow::Break(key) = validate_path(&path) {
-        sender.input(AppMsg::Toast {
-            title: tr!(key),
-            description: None
-        });
-        return;
+    // reject xdg-document-portal fuse mounts, files appear present but vanish
+    // when the portal closes, so the game would silently break
+    let canonical = path.canonicalize().unwrap_or_else(|_| path.to_path_buf());
+    for p in [path.as_path(), canonical.as_path()] {
+        let s = p.to_string_lossy();
+        if s.starts_with("/run/user/") && s.contains("/doc/") {
+            sender.input(AppMsg::Toast {
+                title: tr!("import-game-path-runtime"),
+                description: None
+            });
+            return;
+        }
     }
 
     let config = match Config::get() {
