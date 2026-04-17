@@ -53,7 +53,6 @@ pub fn import_game(sender: relm4::ComponentSender<App>, path: PathBuf) {
         }
     }
 
-    let mut config = config;
     match edition {
         GameEdition::Global => config.game.path.global = path,
         GameEdition::China => config.game.path.china = path
