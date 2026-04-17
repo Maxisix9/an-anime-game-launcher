@@ -63,6 +63,7 @@ download-wine = Baixar wine
 create-prefix = Criar prefixo
 update = Atualizar
 download = Baixar
+import-game = Import game
 predownload-update = Pre-baixar {$version} atualização ({$size})
 
 kill-game-process = Terminar processo de jogo

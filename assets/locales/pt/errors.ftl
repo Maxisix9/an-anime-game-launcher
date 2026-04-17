@@ -64,3 +64,9 @@ game-session-apply-failed = Falha ao aplicar sessão do jogo
 
 discord-rpc-icons-fetch-failed = Falha ao pegar ícones do Discord RPC
 discord-rpc-icon-download-failed = Falha ao baixar ícones do Discord RPC
+
+# Import game
+
+import-game-path-runtime = This path is temporary (Flatpak portal or runtime dir) and won't be valid after the session ends
+import-game-path-home = Cannot use your home directory as a game folder
+import-game-path-too-shallow = Selected path is too close to the filesystem root

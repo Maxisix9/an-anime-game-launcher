@@ -63,6 +63,7 @@ download-wine = Wine 다운로드
 create-prefix = Prefix 생성
 update = 업데이트
 download = 다운로드
+import-game = Import game
 predownload-update = {$version}업데이트 사전 다운로드 ({$size})
 
 download-patch = 패치 다운로드

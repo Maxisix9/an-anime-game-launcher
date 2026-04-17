@@ -61,6 +61,7 @@ download-wine = Pobierz Wine
 create-prefix = Utwórz przedrostek
 update = Aktualizuj
 download = Pobierz
+import-game = Import game
 predownload-update = Wstępnie pobierz aktualizację {$version} ({$size})
 
 kill-game-process = Zabij proces gry

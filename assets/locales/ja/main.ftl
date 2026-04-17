@@ -71,6 +71,7 @@ download-wine = ワインをダウンロード
 create-prefix = プレフィックスを作成
 update = 更新
 download = ダウンロード
+import-game = Import game
 predownload-update = {$version} の早期アップデート({$size})
 
 kill-game-process = ゲームを停止させる

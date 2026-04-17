@@ -63,6 +63,7 @@ download-wine = Ladda ner Wine
 create-prefix = Skapa prefix
 update = Uppdatering
 download = Ladda ned
+import-game = Import game
 predownload-update = Förnedladda {$version} uppdatering ({$size})
 
 kill-game-process = Döda spelprocess

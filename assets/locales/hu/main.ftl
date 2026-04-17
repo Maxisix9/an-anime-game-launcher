@@ -63,6 +63,7 @@ download-wine = Wine letöltése
 create-prefix = Prefix létrehozása
 update = Frissítés
 download = Letöltés
+import-game = Import game
 predownload-update = {$version} verzió előtöltése ({$size})
 
 kill-game-process = Kill game process

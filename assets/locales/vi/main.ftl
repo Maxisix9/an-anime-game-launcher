@@ -63,6 +63,7 @@ download-wine = Tải xuống Wine
 create-prefix = Tạo tiền tố
 update = Cập nhật
 download = Tải xuống
+import-game = Import game
 predownload-update = Tải xuống trước {$version} cập nhật ({$size})
 download-patch = Tải xuống bản vá
 

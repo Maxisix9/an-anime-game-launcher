@@ -64,3 +64,9 @@ game-session-apply-failed = Spielsitzung konnte nicht angewendet werden
 
 discord-rpc-icons-fetch-failed = Discord-RPC-Symbole konnten nicht abgerufen werden
 discord-rpc-icon-download-failed = Discord RPC-Symbol konnte nicht heruntergeladen werden
+
+# Import game
+
+import-game-path-runtime = This path is temporary (Flatpak portal or runtime dir) and won't be valid after the session ends
+import-game-path-home = Cannot use your home directory as a game folder
+import-game-path-too-shallow = Selected path is too close to the filesystem root
