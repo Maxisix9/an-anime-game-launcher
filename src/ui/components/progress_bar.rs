@@ -148,7 +148,7 @@ impl SimpleAsyncComponent for ProgressBar {
                         SophonInstallerUpdate::CheckingFreeSpace(_)
                     ) => self.caption = Some(tr!("checking-free-space")),
 
-                    // checking files before downlaod/update
+                    // checking files before download/update
                     DiffUpdate::SophonInstallerUpdate(SophonInstallerUpdate::CheckingFiles {
                         ..
                     })
@@ -261,7 +261,7 @@ impl SimpleAsyncComponent for ProgressBar {
                         tracing::info!("Downloading finished")
                     }
 
-                    // downlaoding errors
+                    // downloading errors
                     DiffUpdate::SophonInstallerUpdate(SophonInstallerUpdate::DownloadingError(
                         err
                     ))
@@ -274,7 +274,7 @@ impl SimpleAsyncComponent for ProgressBar {
                         path
                     )) => tracing::error!("File hash check failed on {path:?}"),
 
-                    // sophon downlaod progress reports
+                    // sophon download progress reports
                     DiffUpdate::SophonInstallerUpdate(
                         SophonInstallerUpdate::DownloadingProgressBytes {
                             downloaded_bytes,
