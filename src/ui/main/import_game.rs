@@ -1,9 +1,10 @@
+use std::ops::ControlFlow;
 use std::path::{Path, PathBuf};
 
 use crate::*;
 use super::{App, AppMsg};
 
-fn validate_path(path: &Path) -> Result<(), &'static str> {
+fn validate_path(path: &Path) -> ControlFlow<&'static str> {
     // resolve symlinks so /var/run -> /run etc. are caught
     let canonical = path.canonicalize().unwrap_or_else(|_| path.to_path_buf());
 
@@ -13,13 +14,13 @@ fn validate_path(path: &Path) -> Result<(), &'static str> {
         // these are fuse-mounted by xdg-document-portal and vanish when the portal
         // closes
         if s.starts_with("/run/user/") && s.contains("/doc/") {
-            return Err("import-game-path-runtime");
+            return ControlFlow::Break("import-game-path-runtime");
         }
 
         // other dangerous prefixes (/run/media is removable drives, allow it)
         for prefix in ["/run/", "/var/run/", "/proc/", "/sys/", "/dev/"] {
             if s.starts_with(prefix) && !s.starts_with("/run/media/") {
-                return Err("import-game-path-runtime");
+                return ControlFlow::Break("import-game-path-runtime");
             }
         }
     }
@@ -28,15 +29,15 @@ fn validate_path(path: &Path) -> Result<(), &'static str> {
     if let Ok(home) = std::env::var("HOME") {
         let home = PathBuf::from(home);
         if canonical == home || path == home {
-            return Err("import-game-path-home");
+            return ControlFlow::Break("import-game-path-home");
         }
     }
 
-    Ok(())
+    ControlFlow::Continue(())
 }
 
 pub fn import_game(sender: relm4::ComponentSender<App>, path: PathBuf) {
-    if let Err(key) = validate_path(&path) {
+    if let ControlFlow::Break(key) = validate_path(&path) {
         sender.input(AppMsg::Toast {
             title: tr!(key),
             description: None
@@ -71,7 +72,7 @@ pub fn import_game(sender: relm4::ComponentSender<App>, path: PathBuf) {
     if !version_path.exists() {
         match game.get_version() {
             Ok(version) => {
-                if let Err(err) = std::fs::write(&version_path, &version.version) {
+                if let Err(err) = std::fs::write(&version_path, version.version) {
                     tracing::warn!("Failed to write .version during import: {err}");
                 }
             }
