@@ -31,11 +31,6 @@ fn validate_path(path: &Path) -> Result<(), &'static str> {
         }
     }
 
-    // require at least 3 components past root (e.g. /home/user/games, not /home/user)
-    if canonical.components().count() < 4 {
-        return Err("import-game-path-too-shallow");
-    }
-
     Ok(())
 }
 
