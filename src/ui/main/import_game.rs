@@ -4,6 +4,9 @@ use std::path::{Path, PathBuf};
 use crate::*;
 use super::{App, AppMsg};
 
+/// Checks whether the path is valid to import the game from
+/// Return [`ControlFlow::Continue`] if it's valid, and [`ControlFlow::Break`]
+/// with a locale key to display in the error message if it's not.
 fn validate_path(path: &Path) -> ControlFlow<&'static str> {
     // resolve symlinks so /var/run -> /run etc. are caught
     let canonical = path.canonicalize().unwrap_or_else(|_| path.to_path_buf());
