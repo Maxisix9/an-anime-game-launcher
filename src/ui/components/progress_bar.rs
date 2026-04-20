@@ -153,7 +153,7 @@ impl SimpleAsyncComponent for ProgressBar {
                         ..
                     })
                     | DiffUpdate::SophonPatcherUpdate(SophonPatcherUpdate::CheckingFilesStarted) => {
-                        self.caption = Some(tr!("checking-files"));
+                        self.caption = Some(tr!("verifying-files"));
                         self.display_fraction = false;
                     }
 
