@@ -18,6 +18,7 @@ about = 정보
 
 
 close = 닫기
+enable = Enable
 hide = 숨기기
 nothing = 없음
 save = 저장
@@ -72,6 +73,16 @@ patch-broken = 패치가 손상되었습니다.
 patch-unsafe = 패치가 안전하지 않습니다.
 
 kill-game-process = 게임 프로세스 종료
+
+timeout-fix-detected = Driver error detected
+timeout-fix-detected-description =
+    The game exited within a few seconds and a driver error log was found.
+    This usually means the connection to Genshin's servers timed out.
+
+    Latest Spritz-based Wine runners can work around this via WINE_ENABLE_TIMEOUT_FIX=1.
+    Do you want to enable it?
+
+    You can also toggle this in Preferences -> Enhancements -> Wine.
 
 main-window--patch-unavailable-tooltip = 패치 서버를 사용할 수 없으며 런처에서 게임의 패치 상태를 확인할 수 없습니다. 사용자 책임 하에 게임을 실행할 수 있습니다.
 main-window--patch-outdated-tooltip = 패치가 오래되었거나 준비 중이므로 사용할 수 없습니다. 나중에 다시 돌아와서 상태를 확인하세요.

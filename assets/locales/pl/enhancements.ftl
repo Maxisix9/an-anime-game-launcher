@@ -12,7 +12,15 @@ wine-lang-description = Język używany w środowisku Wine. Może rozwiązać pr
 system = Systemowy
 
 borderless-window = Okno bezramkowe
+
+winewayland = Enable Winewayland
+winewayland-description = Use the Wayland driver instead of X11 (sets DISPLAY="")
+winewayland-unavailable-tooltip = Wayland is not available. If using Flatpak, make sure the app can access the Wayland socket from Flatseal.
+
 virtual-desktop = Wirtualny pulpit
+
+timeout-fix = Enable timeout fix
+timeout-fix-description = Set WINE_ENABLE_TIMEOUT_FIX=1 to work around crash shortly after launch
 
 map-drive-c = Mapuj dysk C:
 map-drive-c-description = Automatycznie stwórz dowiązanie symboliczne folderu drive_c w przedrostku Wine do katalogu dosdevices.

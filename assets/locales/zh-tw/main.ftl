@@ -17,6 +17,7 @@ wish-url = 轉到祈願 URL
 about = 關於
 
 close = 關閉
+enable = Enable
 hide = 隱藏
 nothing = 不變
 save = 保存
@@ -62,6 +63,16 @@ import-game = Import game
 predownload-update = 預下載版本更新 {$version} ({$size})
 
 kill-game-process = 中止遊戲程序
+
+timeout-fix-detected = Driver error detected
+timeout-fix-detected-description =
+    The game exited within a few seconds and a driver error log was found.
+    This usually means the connection to Genshin's servers timed out.
+
+    Latest Spritz-based Wine runners can work around this via WINE_ENABLE_TIMEOUT_FIX=1.
+    Do you want to enable it?
+
+    You can also toggle this in Preferences -> Enhancements -> Wine.
 
 main-window--patch-unavailable-tooltip = 補丁伺服器不可用，啟動器無法驗證遊戲補丁狀態。你可以運行遊戲，但是有出問題的風險
 main-window--patch-outdated-tooltip = 補丁版本太舊，新版補丁可能還沒製作完成，無法使用。請過段時間再回來查看最新狀態

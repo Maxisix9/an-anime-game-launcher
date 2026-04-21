@@ -19,6 +19,7 @@ about = O programie
 
 
 close = Zamknij
+enable = Enable
 hide = Ukryj
 nothing = Nic nie rób
 save = Zapisz
@@ -65,6 +66,16 @@ import-game = Import game
 predownload-update = Wstępnie pobierz aktualizację {$version} ({$size})
 
 kill-game-process = Zabij proces gry
+
+timeout-fix-detected = Driver error detected
+timeout-fix-detected-description =
+    The game exited within a few seconds and a driver error log was found.
+    This usually means the connection to Genshin's servers timed out.
+
+    Latest Spritz-based Wine runners can work around this via WINE_ENABLE_TIMEOUT_FIX=1.
+    Do you want to enable it?
+
+    You can also toggle this in Preferences -> Enhancements -> Wine.
 
 main-window--patch-unavailable-tooltip = Serwery łatek są niedostępne, więc launcher nie może zweryfikować statusu łatki gry. Możesz uruchomić grę na własne ryzyko.
 main-window--patch-outdated-tooltip = Łatka jest przestarzała lub w stanie przygotowania, więc jest niedostępna do użycia. Wróć później, aby sprawdzić jej status.

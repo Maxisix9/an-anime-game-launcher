@@ -20,6 +20,7 @@ close = { $form ->
     [verb] Menutup
     *[noun] Tutup
 }
+enable = Enable
 
 hide = { $form ->
     [verb] Sembunyikan
@@ -74,6 +75,16 @@ import-game = Import game
 predownload-update = Pra-unduh pembaruan versi {$version} ({$size})
 
 kill-game-process = Hentikan paksa proses game
+
+timeout-fix-detected = Driver error detected
+timeout-fix-detected-description =
+    The game exited within a few seconds and a driver error log was found.
+    This usually means the connection to Genshin's servers timed out.
+
+    Latest Spritz-based Wine runners can work around this via WINE_ENABLE_TIMEOUT_FIX=1.
+    Do you want to enable it?
+
+    You can also toggle this in Preferences -> Enhancements -> Wine.
 
 main-window--patch-unavailable-tooltip = Server patch tidak tersedia dan launcher tidak bisa memverifikasi status patch game. Anda bisa menjalankan game dengan resiko sendiri 
 main-window--patch-outdated-tooltip = Patch kadaluarsa atau sedang dalam persiapan sehingga tidak tersedia. Kembali lagi nanti untuk melihat status patch

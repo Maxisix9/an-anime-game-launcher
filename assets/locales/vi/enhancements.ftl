@@ -12,7 +12,15 @@ wine-lang-description = Ngôn ngữ được sử dụng trong môi trường Wi
 system = Hệ thống
 
 borderless-window = Cửa sổ không viền
+
+winewayland = Enable Winewayland
+winewayland-description = Use the Wayland driver instead of X11 (sets DISPLAY="")
+winewayland-unavailable-tooltip = Wayland is not available. If using Flatpak, make sure the app can access the Wayland socket from Flatseal.
+
 virtual-desktop = Màn hình ảo
+
+timeout-fix = Enable timeout fix
+timeout-fix-description = Set WINE_ENABLE_TIMEOUT_FIX=1 to work around crash shortly after launch
 
 map-drive-c = Ánh xạ ổ C:
 map-drive-c-description = Tự động liên kết thư mục drive_c từ tiền tố Wine đến dosdevices

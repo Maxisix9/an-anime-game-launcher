@@ -26,6 +26,7 @@ chinese = 中国語
 migrate-installation = インストール場所を変更する。
 migrate-installation-description = ゲームのインストール先を変更できるウィンドウを表示します。
 repair-game = ゲームを修復する
+remake-prefix = Remake prefix
 
 status = ステータス
 

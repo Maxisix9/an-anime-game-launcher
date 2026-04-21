@@ -99,7 +99,9 @@ pub enum AppMsg {
     Toast {
         title: String,
         description: Option<String>
-    }
+    },
+
+    SuggestTimeoutFix
 }
 
 #[relm4::component(pub)]
@@ -1411,12 +1413,49 @@ impl SimpleComponent for App {
             AppMsg::Toast {
                 title,
                 description
-            } => self.toast(title, description)
+            } => self.toast(title, description),
+
+            AppMsg::SuggestTimeoutFix => self.suggest_timeout_fix()
         }
     }
 }
 
 impl App {
+    pub fn suggest_timeout_fix(&self) {
+        #[allow(static_mut_refs)]
+        let Some(window) = (unsafe { MAIN_WINDOW.as_ref() }) else {
+            return;
+        };
+
+        let dialog = adw::MessageDialog::new(
+            Some(window),
+            Some(&tr!("timeout-fix-detected")),
+            Some(&tr!("timeout-fix-detected-description"))
+        );
+
+        dialog.add_response("ignore", &tr!("close"));
+        dialog.add_response("enable", &tr!("enable"));
+
+        dialog.set_response_appearance("enable", adw::ResponseAppearance::Suggested);
+
+        dialog.connect_response(Some("enable"), |_, _| {
+            if let Ok(mut config) = Config::get() {
+                config.game.wine.timeout_fix = true;
+
+                Config::update(config);
+            }
+
+            #[allow(static_mut_refs)]
+            unsafe {
+                if let Some(prefs) = PREFERENCES_WINDOW.as_ref() {
+                    prefs.emit(PreferencesAppMsg::SetTimeoutFix(true));
+                }
+            }
+        });
+
+        dialog.present();
+    }
+
     pub fn toast<T: AsRef<str>>(&mut self, title: T, description: Option<T>) {
         let toast = adw::Toast::new(title.as_ref());
 

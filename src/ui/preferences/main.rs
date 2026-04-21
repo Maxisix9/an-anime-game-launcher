@@ -30,6 +30,7 @@ pub enum PreferencesAppMsg {
     UpdateLauncherState,
     RepairGame,
     RemakePrefix,
+    SetTimeoutFix(bool),
 
     Toast {
         title: String,
@@ -146,6 +147,10 @@ impl SimpleAsyncComponent for PreferencesApp {
 
                 let _ = sender.output(Self::Output::RemakePrefix);
             },
+
+            PreferencesAppMsg::SetTimeoutFix(value) => {
+                self.enhancements.emit(EnhancementsAppMsg::SetTimeoutFix(value));
+            }
 
             PreferencesAppMsg::Toast {
                 title,

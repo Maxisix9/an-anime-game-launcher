@@ -18,6 +18,7 @@ about = Về chúng tôi
 
 
 close = Đóng
+enable = Enable
 hide = Ẩn
 nothing = Không có gì
 save = Lưu
@@ -71,6 +72,16 @@ patch-broken = Bản vá bị hỏng
 patch-unsafe = Bản vá không an toàn
 
 kill-game-process = Buộc đóng tiến trình trò chơi
+
+timeout-fix-detected = Driver error detected
+timeout-fix-detected-description =
+    The game exited within a few seconds and a driver error log was found.
+    This usually means the connection to Genshin's servers timed out.
+
+    Latest Spritz-based Wine runners can work around this via WINE_ENABLE_TIMEOUT_FIX=1.
+    Do you want to enable it?
+
+    You can also toggle this in Preferences -> Enhancements -> Wine.
 
 main-window--patch-unavailable-tooltip = Máy chủ vá không khả dụng và Launcher không thể xác minh trạng thái vá. Bạn có thể chơi trò chơi nhưng rất không an toàn
 main-window--patch-outdated-tooltip = Bản vá đã lỗi thời hoặc đang ở trạng thái chuẩn bị nên không thể sử dụng. Quay lại sau để xem trạng thái
