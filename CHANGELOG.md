@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added "Remake prefix" button
+- Added "Import game" button
 - Added support for animated launcher background
 
 ### Changed
