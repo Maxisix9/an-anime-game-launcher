@@ -11,6 +11,7 @@ mod download_diff;
 mod migrate_folder;
 mod disable_telemetry;
 mod launch;
+mod import_game;
 
 use anime_launcher_sdk::components::loader::ComponentsLoader;
 use anime_launcher_sdk::config::ConfigExt;
@@ -89,6 +90,8 @@ pub enum AppMsg {
 
     PredownloadUpdate,
     PerformAction,
+    ImportGame,
+    ImportGameFromPath(std::path::PathBuf),
 
     HideWindow,
     ShowWindow,
@@ -647,6 +650,31 @@ impl SimpleComponent for App {
                                     adw::Bin {
                                         set_css_classes: &["background", "round-bin"],
 
+                                        #[watch]
+                                        set_visible: matches!(model.state.as_ref(),
+                                            Some(LauncherState::GameNotInstalled(_)) |
+                                            Some(LauncherState::VoiceNotInstalled(_))
+                                        ) && !model.kill_game_button,
+
+                                        #[name = "import_game_button"]
+                                        gtk::Button {
+                                            set_width_request: 44,
+                                            set_css_classes: &["circular"],
+                                            set_icon_name: "document-import-symbolic",
+                                            set_tooltip_text: Some(&tr!("import-game")),
+
+                                            #[watch]
+                                            set_sensitive: !model.disabled_buttons,
+
+                                            connect_clicked[sender] => move |_| {
+                                                sender.input(AppMsg::ImportGame);
+                                            }
+                                        }
+                                    },
+
+                                    adw::Bin {
+                                        set_css_classes: &["background", "round-bin"],
+
                                         gtk::Button {
                                             #[watch]
                                             set_sensitive: !model.disabled_buttons,
@@ -716,6 +744,30 @@ impl SimpleComponent for App {
         let toast_overlay = &model.toast_overlay;
 
         let widgets = view_output!();
+
+        // drag-and-drop onto the import button
+        {
+            let drop_target = gtk::DropTarget::new(
+                gtk::gdk::FileList::static_type(),
+                gtk::gdk::DragAction::COPY
+            );
+            drop_target.connect_drop(clone!(
+                #[strong]
+                sender,
+                move |_, value, _, _| {
+                    if let Ok(file_list) = value.get::<gtk::gdk::FileList>() {
+                        if let Some(file) = file_list.files().first() {
+                            if let Some(path) = file.path() {
+                                sender.input(AppMsg::ImportGameFromPath(path));
+                                return true;
+                            }
+                        }
+                    }
+                    false
+                }
+            ));
+            widgets.import_game_button.add_controller(drop_target);
+        }
 
         unsafe {
             MAIN_WINDOW = Some(widgets.main_window.clone());
@@ -1319,6 +1371,26 @@ impl SimpleComponent for App {
                     LauncherState::GameOutdated(_) | LauncherState::VoiceOutdated(_) => ()
                 }
             },
+
+            AppMsg::ImportGame => {
+                relm4::spawn(clone!(
+                    #[strong]
+                    sender,
+                    async move {
+                        if let Some(folder) = rfd::AsyncFileDialog::new().pick_folder().await {
+                            sender.input(AppMsg::ImportGameFromPath(folder.path().to_path_buf()));
+                        }
+                    }
+                ));
+            }
+
+            AppMsg::ImportGameFromPath(path) => {
+                std::thread::spawn(clone!(
+                    #[strong]
+                    sender,
+                    move || import_game::import_game(sender, path)
+                ));
+            }
 
             AppMsg::HideWindow => unsafe {
                 // I honestly don't care anymore.

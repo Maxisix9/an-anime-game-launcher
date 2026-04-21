@@ -63,6 +63,7 @@ download-wine = 下载 Wine
 create-prefix = 创建 Wine prefix
 update = 更新
 download = 下载
+import-game = Import game
 predownload-update = 预下载版本更新 {$version} ({$size})
 
 kill-game-process = 中止游戏进程

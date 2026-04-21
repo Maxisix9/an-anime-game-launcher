@@ -69,7 +69,8 @@ disable-telemetry = Nonaktifkan telemetri
 download-wine = Unduh wine
 create-prefix = Buat prefix
 update = Perbarui
-download = Unduh 
+download = Unduh
+import-game = Import game
 predownload-update = Pra-unduh pembaruan versi {$version} ({$size})
 
 kill-game-process = Hentikan paksa proses game

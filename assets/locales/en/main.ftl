@@ -64,6 +64,7 @@ create-prefix = Create prefix
 install-dxvk = Install DXVK
 update = Update
 download = Download
+import-game = Import game
 predownload-update = Pre-download {$version} update ({$size})
 
 kill-game-process = Kill game process

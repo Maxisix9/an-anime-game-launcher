@@ -77,6 +77,7 @@ download-wine = Установить Wine
 create-prefix = Создать префикс
 update = Обновить
 download = Установить
+import-game = Import game
 predownload-update = Предустановить обновление {$version} ({$size})
 
 kill-game-process = Убить процесс игры

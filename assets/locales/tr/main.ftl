@@ -71,6 +71,7 @@ download-wine = Wine indir
 create-prefix = Prefix oluştur
 update = Güncelle
 download = İndir
+import-game = Import game
 predownload-update =  Güncellemeyi önceden indir{$version}  ({$size})
 
 kill-game-process = Oyunu zorla kapat
