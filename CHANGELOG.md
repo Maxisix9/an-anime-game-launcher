@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added "Remake prefix" button
 - Added "Import game" button
 - Added support for animated launcher background
+- Added setting to enable Winewayland to make the game use Wayland instead of X11
+- Added a setting to enable "Timeout fix"
+- Added automatic detection and suggestion for the "Timeout fix" setting
 
 ### Changed
 
