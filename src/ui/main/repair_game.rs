@@ -1,12 +1,9 @@
 use relm4::prelude::*;
 use relm4::Sender;
 
-use anime_launcher_sdk::anime_game_core::reqwest::blocking::Client;
+use anime_launcher_sdk::anime_game_core::{reqwest::blocking::Client, sophon::installer::SophonInstaller};
 use anime_launcher_sdk::anime_game_core::sophon;
-use anime_launcher_sdk::anime_game_core::sophon::repairer::{
-    SophonRepairer,
-    Update as SophonRepairerUpdate
-};
+use anime_launcher_sdk::anime_game_core::sophon::installer::Update as SophonRepairerUpdate;
 
 use crate::*;
 use crate::ui::components::*;
@@ -27,19 +24,19 @@ pub fn repair_game(
     std::thread::spawn(move || {
         let client = Client::new();
 
-        let game_branches_info = sophon::get_game_branches_info(
+        let game_branches_info = sophon::api::get_game_branches_info(
             &client,
-            config.launcher.edition.into()
+            &config.launcher.edition.into()
         ).expect("failed to get game branches info");
 
-        let game_branch_info = game_branches_info.get_game_latest_by_id(
+        let game_branch_info = game_branches_info.get_game_branch_by_id_or_biz_latest(
             config.launcher.edition.game_id()
         ).expect("failed to get latest game version info");
 
-        let downloads = sophon::installer::get_game_download_sophon_info(
+        let downloads = sophon::api::get_game_download_sophon_info(
             &client,
             game_branch_info.main.as_ref().expect("`None` case would've been caught earlier"),
-            config.launcher.edition.into()
+            &config.launcher.edition.into()
         ).expect("failed to get game info");
 
         let game_download_info = downloads.manifests.iter()
@@ -68,61 +65,60 @@ pub fn repair_game(
             }
         }
 
-        let repairer = SophonRepairer::new(
-            client,
-            config.launcher.temp.unwrap_or_else(std::env::temp_dir),
-            manifests
-        ).expect("failed to initialize sophon repairer");
+        let repairer_temp = config.launcher.temp.unwrap_or_else(std::env::temp_dir);
 
-        let updater = move |msg: SophonRepairerUpdate| {
-            match msg {
-                SophonRepairerUpdate::VerifyingProgress { total, checked } => {
-                    tracing::trace!(checked, total, "Verification progress");
+        for manifest in manifests {
+            let mut repairer = SophonInstaller::new(
+                client.clone(),
+                &manifest,
+                &repairer_temp,
+            ).expect("failed to initialize sophon repairer");
+            repairer.mode_repair = true;
 
-                    progress_bar_input.send(ProgressBarMsg::UpdateProgressCounter(checked, total));
+            let updater = |msg: SophonRepairerUpdate| {
+                match msg {
+                    SophonRepairerUpdate::CheckingFilesProgress { total, passed } => {
+                        tracing::trace!(passed, total, "Verification progress");
+
+                        progress_bar_input.send(ProgressBarMsg::UpdateProgressCounter(passed, total));
+                    }
+
+                    SophonRepairerUpdate::DownloadingProgressFiles { total_files, downloaded_files } => {
+                        tracing::trace!(downloaded_files, total_files, "Repairing progress");
+
+                        progress_bar_input.send(ProgressBarMsg::UpdateProgressCounter(downloaded_files, total_files));
+                    }
+
+                    SophonRepairerUpdate::CheckingFiles { .. } => {
+                        tracing::trace!("Verification started");
+                    }
+
+                    SophonRepairerUpdate::DownloadingStarted { .. } => {
+                        tracing::trace!("Repairing started");
+
+                        progress_bar_input.send(ProgressBarMsg::UpdateCaption(Some(tr!("repairing-files"))));
+                    }
+
+                    SophonRepairerUpdate::DownloadingFinished => {
+                        tracing::trace!("Repair finished");
+                    }
+
+                    SophonRepairerUpdate::DownloadingError(err) => {
+                        tracing::error!(?err, "Error during repairing")
+                    }
+                    
+                    _ => {}
                 }
+            };
 
-                SophonRepairerUpdate::RepairingProgress { total, repaired } => {
-                    tracing::trace!(repaired, total, "Repairing progress");
+            repairer.install(
+                game_path,
+                config.launcher.repairer.threads as usize,
+                updater
+            );
+        }
 
-                    progress_bar_input.send(ProgressBarMsg::UpdateProgressCounter(repaired, total));
-                }
-
-                SophonRepairerUpdate::VerifyingStarted => {
-                    tracing::trace!("Verification started");
-                }
-
-                SophonRepairerUpdate::VerifyingFinished { broken } => {
-                    tracing::info!("Verification finished with {broken} broken files")
-                }
-
-                SophonRepairerUpdate::RepairingStarted => {
-                    tracing::trace!("Repairing started");
-
-                    progress_bar_input.send(ProgressBarMsg::UpdateCaption(Some(tr!("repairing-files"))));
-                }
-
-                SophonRepairerUpdate::RepairingFinished => {
-                    tracing::trace!("Repair finished");
-                }
-
-                SophonRepairerUpdate::DownloadingError(err) => {
-                    tracing::error!(?err, "Error during repairing")
-                }
-
-                SophonRepairerUpdate::FileHashCheckFailed(path) => {
-                    tracing::error!(?path, "File hash check error")
-                }
-            }
-        };
-
-        repairer.check_and_repair(
-            game_path,
-            config.launcher.repairer.threads as usize,
-            updater
-        );
-
-        let _ = std::fs::remove_dir_all(repairer.downloading_temp());
+        let _ = std::fs::remove_dir_all(repairer_temp);
 
         sender.input(AppMsg::SetDownloading(false));
     });
