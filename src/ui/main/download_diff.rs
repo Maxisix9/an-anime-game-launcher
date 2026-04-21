@@ -21,6 +21,10 @@ pub fn download_diff(
             .for_edition(config.launcher.edition)
             .to_path_buf();
 
+        if !game_path.exists() {
+            let _ = std::fs::create_dir(&game_path);
+        }
+
         if let Some(temp) = config.launcher.temp {
             diff = diff.with_temp_folder(temp);
         }
