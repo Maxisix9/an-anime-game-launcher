@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated Japanese, French and Thai locales
+- Changed sophon download and update backend, introducing performance improvements and various fixes
 
 ### Fixed
 
