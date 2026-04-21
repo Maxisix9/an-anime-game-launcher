@@ -22,7 +22,13 @@ pub fn download_diff(
             .to_path_buf();
 
         if !game_path.exists() {
-            let _ = std::fs::create_dir(&game_path);
+            if let Err(err) = std::fs::create_dir(&game_path) {
+                tracing::error!(?err, "Failed to create game directory");
+                sender.input(AppMsg::Toast {
+                    title: tr!("downloading-failed"),
+                    description: Some(err.to_string())
+                });
+            }
         }
 
         if let Some(temp) = config.launcher.temp {
