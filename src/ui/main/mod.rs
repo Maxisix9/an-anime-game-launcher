@@ -654,8 +654,7 @@ impl SimpleComponent for App {
 
                                         #[watch]
                                         set_visible: matches!(model.state.as_ref(),
-                                            Some(LauncherState::GameNotInstalled(_)) |
-                                            Some(LauncherState::VoiceNotInstalled(_))
+                                            Some(LauncherState::GameNotInstalled(_))
                                         ) && !model.kill_game_button,
 
                                         #[name = "import_game_button"]
