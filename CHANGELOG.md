@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.19.1] - 2026-04-23
+
+### Fixed
+
+- Fixed deleting the wrong directory at the end of repair
+
 ## [3.19.0] - 2026-04-23
 
 ### Added
@@ -748,7 +754,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <br>
 
-[unreleased]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.19.0...next
+[unreleased]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.19.1...next
+[3.19.1]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.19.0...3.19.1
 [3.19.0]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.18.0...3.19.0
 [3.18.0]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.17.0...3.18.0
 [3.17.0]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.16.0...3.17.0
