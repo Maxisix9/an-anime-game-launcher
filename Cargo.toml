@@ -2,7 +2,10 @@
 name = "anime-game-launcher"
 version = "3.18.0"
 description = "Anime Game launcher"
-authors = ["Nikita Podvirnyi <krypt0nn@vk.com>"]
+authors = [
+    "Nikita Podvirnyi <krypt0nn@vk.com>",
+    "@JohnTheCoolingFan <https://github.com/JohnTheCoolingFan>"
+]
 homepage = "https://github.com/an-anime-team/an-anime-game-launcher"
 repository = "https://github.com/an-anime-team/an-anime-game-launcher"
 license = "GPL-3.0"
