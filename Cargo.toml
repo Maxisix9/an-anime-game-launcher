@@ -1,6 +1,6 @@
 [package]
 name = "anime-game-launcher"
-version = "3.18.0"
+version = "3.19.0"
 description = "Anime Game launcher"
 authors = [
     "Nikita Podvirnyi <krypt0nn@vk.com>",
