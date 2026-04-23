@@ -85,18 +85,36 @@ impl SimpleComponent for AboutDialog {
 
             set_release_notes_version: &APP_VERSION,
             set_release_notes: &[
-                "<p>Fixed</p>",
+                "<p>Added</p>",
 
                 "<ul>",
-                    "<li>Fixed size of images in the \"Appearance\" preferences section (most noticeable on flatpak)</li>",
-                    "<li>Fixed the package name for libwebp-utils on Arch Linux</li>",
+                    "<li>Added 'Remake prefix' button</li>",
+                    "<li>Added 'Import game' button</li>",
+                    "<li>Added support for animated launcher background</li>",
+                    "<li>Added setting to enable Winewayland to make the game use Wayland instead of X11</li>",
+                    "<li>Added a setting to enable 'Timeout fix'</li>",
+                    "<li>Added automatic detection and suggestion for the 'Timeout fix' setting</li>",
                 "</ul>",
 
                 "<p>Changed</p>",
 
                 "<ul>",
-                    "<li>Updated Korean translation</li>",
-                "</ul>"
+                    "<li>Updated Japanese, French and Thai locales</li>",
+                    "<li>Changed sophon download and update backend, introducing performance improvements and various fixes</li>",
+                "</ul>",
+
+                "<p>Fixed</p>",
+
+                "<ul>",
+                    "<li>Fixed parts of the game update function to handle new files</li>",
+                    "<li>Fixed a panic when the launcher folder is a broken symlink, the launcher will exit with an error message instead</li>",
+                "</ul>",
+
+                "<p>Removed</p>",
+
+                "<ul>",
+                    "<li>Removed dependency on dwebp/libwebp-utils</li>",
+                "</ul>",
             ].join("\n")
         }
     }

@@ -47,6 +47,21 @@
   </categories>
   <content_rating type="oars-1.1" />
   <releases>
+   <release version="3.19.0" date="2026-04-23">
+     <description>
+       <p>Added 'Remake prefix' button</p>
+       <p>Added 'Import game' button</p>
+       <p>Added support for animated launcher background</p>
+       <p>Added setting to enable Winewayland to make the game use Wayland instead of X11</p>
+       <p>Added a setting to enable 'Timeout fix'</p>
+       <p>Added automatic detection and suggestion for the 'Timeout fix' setting</p>
+       <p>Updated Japanese, French and Thai locales</p>
+       <p>Changed sophon download and update backend, introducing performance improvements and various fixes</p>
+       <p>Fixed parts of the game update function to handle new files</p>
+       <p>Fixed a panic when the launcher folder is a broken symlink, the launcher will exit with an error message instead</p>
+       <p>Removed dependency on dwebp/libwebp-utils</p>
+     </description>
+   </release>
    <release version="3.18.0" date="2025-11-12">
      <description>
        <p>Fixed size of images in the "Appearance" preferences section (most noticeable on flatpak)</p>
