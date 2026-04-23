@@ -47,6 +47,11 @@
   </categories>
   <content_rating type="oars-1.1" />
   <releases>
+   <release version="3.19.1" date="2026-04-23">
+     <description>
+       <p>Fixed deleting the wrong directory at the end of repair</p>
+     </description>
+   </release>
    <release version="3.19.0" date="2026-04-23">
      <description>
        <p>Added 'Remake prefix' button</p>
