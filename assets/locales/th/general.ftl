@@ -3,6 +3,8 @@ modern = โมเดิร์น
 classic = คลาสสิค
 update-background = อัพเดตภาพพื้นหลัง
 update-background-description = ดาวน์โหลดภาพพื้นหลังสำหรับ launcher คุณสามารถปิดการใช้งานเพื่อใช้รูปภาพที่คุณกำหนดเองแทนได้
+video-background = Use video background
+video-background-description = Download and display official animated background for the launcher
 
 launcher-language = ภาษาของ launcher
 launcher-language-description = ใช้หลังจากรีสตาร์ท launcher
@@ -24,6 +26,7 @@ chinese = ภาษาจีน
 migrate-installation = ย้ายการติดตั้งเกม
 migrate-installation-description = เปิดหน้าต่างพิเศษที่คุณสามารถเปลี่ยนโฟลเดอร์การติดตั้งเกมของคุณได้
 repair-game = ซ่อมแซมการติดตั้งเกม
+remake-prefix = Remake prefix
 
 status = สถานะ
 

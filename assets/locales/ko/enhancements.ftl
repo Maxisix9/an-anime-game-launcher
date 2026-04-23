@@ -12,7 +12,15 @@ wine-lang-description = 와인 환경에서 사용되는 언어입니다. 키보
 system = 시스템
 
 borderless-window = 테두리 없는 창
+
+winewayland = Enable Winewayland
+winewayland-description = Use the Wayland driver instead of X11 (sets DISPLAY="")
+winewayland-unavailable-tooltip = Wayland is not available. If using Flatpak, make sure the app can access the Wayland socket from Flatseal.
+
 virtual-desktop = 가상 데스크톱
+
+timeout-fix = Enable timeout fix
+timeout-fix-description = Set WINE_ENABLE_TIMEOUT_FIX=1 to work around crash shortly after launch
 
 map-drive-c = C: 드라이브 맵핑
 map-drive-c-description = 자동적으로 와인 구성에서 drive_c폴더를 dosdevices로 심볼릭 링크합니다.

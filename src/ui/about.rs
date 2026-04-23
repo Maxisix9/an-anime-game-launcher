@@ -33,7 +33,8 @@ impl SimpleComponent for AboutDialog {
             set_version: &APP_VERSION,
 
             set_developers: &[
-                "Nikita Podvirnyi https://github.com/krypt0nn"
+                "Nikita Podvirnyi https://github.com/krypt0nn",
+                "@JohnTheCoolingFan https://github.com/JohnTheCoolingFan"
             ],
 
             add_credit_section: (Some("An Anime Team"), &[
@@ -42,7 +43,8 @@ impl SimpleComponent for AboutDialog {
                 "Luna Neff  https://github.com/lunaneff",
                 "Renaud Lepage https://github.com/cybik",
                 "Soham Nandy https://github.com/natimerry",
-                "@mkrsym1 https://github.com/mkrsym1"
+                "@mkrsym1 https://github.com/mkrsym1",
+                "@JohnTheCoolingFan https://github.com/JohnTheCoolingFan"
             ]),
 
             set_artists: &[
@@ -69,7 +71,7 @@ impl SimpleComponent for AboutDialog {
                 "Indonesia — @yumekarisu https://github.com/yumekarisu",
                 "Tiếng Việt — Nguyễn Hữu Chánh https://github.com/Chanhnh",
                 "Українська — Іван Потієнко https://github.com/xxanqw",
-                "ไทย — @vbrabandt2005 https://github.com/vbrabandt2005",
+                "ไทย — @vbrabandt https://github.com/vbrabandt",
                 "Čeština — @panmourovaty https://github.com/panmourovaty"
             ].join("\n"),
 
@@ -85,18 +87,36 @@ impl SimpleComponent for AboutDialog {
 
             set_release_notes_version: &APP_VERSION,
             set_release_notes: &[
-                "<p>Fixed</p>",
+                "<p>Added</p>",
 
                 "<ul>",
-                    "<li>Fixed size of images in the \"Appearance\" preferences section (most noticeable on flatpak)</li>",
-                    "<li>Fixed the package name for libwebp-utils on Arch Linux</li>",
+                    "<li>Added 'Remake prefix' button</li>",
+                    "<li>Added 'Import game' button</li>",
+                    "<li>Added support for animated launcher background</li>",
+                    "<li>Added setting to enable Winewayland to make the game use Wayland instead of X11</li>",
+                    "<li>Added a setting to enable 'Timeout fix'</li>",
+                    "<li>Added automatic detection and suggestion for the 'Timeout fix' setting</li>",
                 "</ul>",
 
                 "<p>Changed</p>",
 
                 "<ul>",
-                    "<li>Updated Korean translation</li>",
-                "</ul>"
+                    "<li>Updated Japanese, French and Thai locales</li>",
+                    "<li>Changed sophon download and update backend, introducing performance improvements and various fixes</li>",
+                "</ul>",
+
+                "<p>Fixed</p>",
+
+                "<ul>",
+                    "<li>Fixed parts of the game update function to handle new files</li>",
+                    "<li>Fixed a panic when the launcher folder is a broken symlink, the launcher will exit with an error message instead</li>",
+                "</ul>",
+
+                "<p>Removed</p>",
+
+                "<ul>",
+                    "<li>Removed dependency on dwebp/libwebp-utils</li>",
+                "</ul>",
             ].join("\n")
         }
     }

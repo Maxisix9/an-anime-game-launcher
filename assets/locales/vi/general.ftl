@@ -3,6 +3,9 @@ modern = Hiện đại
 classic = Cổ điển
 update-background = Cập nhật ảnh nền
 update-background-description = Tải xuống ảnh nền chính thức cho Launcher. Nhưng bạn cũng có thể tắt nó để sử dụng hình ảnh của mình
+video-background = Use video background
+video-background-description = Download and display official animated background for the launcher
+
 launcher-language = Ngôn ngữ Launcher
 launcher-language-description = Áp dụng sau khi khởi động lại
 
@@ -27,6 +30,7 @@ chinese = Tiếng Trung
 migrate-installation = Di chuyển nơi cài đặt
 migrate-installation-description = Mở cửa sổ đặc biệt nơi bạn có thể thay đổi thư mục cài đặt trò chơi của mình
 repair-game = Sửa chữa
+remake-prefix = Remake prefix
 
 status = Trạng thái
 

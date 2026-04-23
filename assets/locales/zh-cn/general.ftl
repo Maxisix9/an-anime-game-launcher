@@ -3,6 +3,8 @@ modern = 现代
 classic = 古典
 update-background = 更新背景图片
 update-background-description = 下载官方启动器背景图片。你可以关闭这个选项并使用你自己的图片
+video-background = Use video background
+video-background-description = Download and display official animated background for the launcher
 
 launcher-language = 启动器语言
 launcher-language-description = 重启后生效
@@ -24,6 +26,7 @@ chinese = 汉语
 migrate-installation = 迁移安装
 migrate-installation-description = 打开此窗口以改变游戏安装文件夹
 repair-game = 修复游戏
+remake-prefix = Remake prefix
 
 status = 状态
 

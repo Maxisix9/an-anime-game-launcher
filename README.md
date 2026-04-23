@@ -5,6 +5,7 @@
 
 <p align="center">
     <a href="https://discord.gg/ck37X6UWBp">Discord</a> ·
+    <a href="https://zulip.dawn.wine">Zulip</a> ·
     <a href="https://github.com/an-anime-team/an-anime-game-launcher/wiki">Wiki</a>
 </p>
 
@@ -23,7 +24,7 @@ All the project's life happen in our discord server. If you have any questions o
 
 # ⬇️ Download
 
-Launcher developer does not provide any packages for this programm. Instead, we almost fully rely on other people to maintain them.
+Launcher developer does not provide any packages for this program. Instead, we almost fully rely on other people to maintain them.
 
 To see the installation guides, please visit [this wiki page](https://github.com/an-anime-team/an-anime-game-launcher/wiki/Installation).
 
@@ -35,7 +36,7 @@ These packages are officially supported by the An Anime Team, and we try to ensu
 
 | Format | Wiki | Source | Distributions | Maintainer |
 | - | - | - | - | - |
-| Flatpak | [wiki](https://github.com/an-anime-team/an-anime-game-launcher/wiki/Installation#-any-distribution-flatpak) | [flatpak-builds](https://github.com/an-anime-team/flatpak-builds) | Any (Fedora, Pop!_OS, SteamOS / Steam Deck, etc.) | Luna (available in discord) |
+| Flatpak | [wiki](https://github.com/an-anime-team/an-anime-game-launcher/wiki/Installation#-any-distribution-flatpak) | [Flathub](https://flathub.org/apps/moe.launcher.an-anime-game-launcher) | Any (Fedora, Pop!_OS, SteamOS / Steam Deck, etc.) | NelloKudo |
 | RPM | [wiki](https://github.com/an-anime-team/an-anime-game-launcher/wiki/Installation#-fedora-rpm) | [AAGL](https://build.opensuse.org/repositories/home:Maroxy:AAT-Apps/AAGL) * | Fedora, OpenSUSE | Maroxy (second discord admin) |
 
 > [!NOTE]

@@ -1,52 +1,52 @@
 game-resolution = ความละเอียดของเกม
 gamescope-resolution = ความละเอียดของ Gamescope
 
-framerate = Framerate
+framerate = เฟรมเรท
 framerate-limit = ขีดจำกัดเฟรมเรต
 unfocused-framerate-limit = เฟรมเรทจำกัดขณะไม่ได้โฟกัส
 
 upscaling = การเพิ่มขนาดความละเอียด
-upscaling-description = Render the game in lower resolution and improve the image quality using special algorithms
+upscaling-description = เรนเดอร์เกมในความละเอียดต่ำและปรับปรุงคุณภาพของภาพโดยใช้อัลกอริทึมพิเศษ
 
-upscaler = Upscaler
-upscaler-description = Algorithm used to perform image upscaling
+upscaler = เครื่องมือเพิ่มความละเอียด
+upscaler-description = อัลกอริทึมที่ใช้ในการเพิ่มความละเอียดของภาพ
 
-auto = Auto
-integer = Integer
-fit = Fit
-fill = Fill
-stretch = Stretch
+auto = อัตโนมัติ
+integer = จำนวนเต็ม
+fit = พอดี
+fill = เติมเต็ม
+stretch = ยืด
 
-upscale-filter = Filter
-upscale-filter-description = Algorithm used to filter upscaled image
+upscale-filter = ตัวกรอง
+upscale-filter-description = อัลกอริทึมที่ใช้ในการกรองภาพที่เพิ่มความละเอียด
 
-linear = Linear
-nearest = Nearest
+linear = เชิงเส้น
+nearest = ใกล้ที่สุด
 nis = NIS
-pixel = Pixel
+pixel = พิกเซล
 
-upscale-sharpness = Sharpness
-upscale-sharpness-description = Upscaling sharpness
+upscale-sharpness = ความคมชัด
+upscale-sharpness-description = ความคมชัดของการเพิ่มความละเอียด
 
-smallest = Smallest
-small = Small
-high = High
-highest = Highest
+smallest = เล็กที่สุด
+small = เล็ก
+high = สูง
+highest = สูงที่สุด
 
-hdr-support = HDR support
-hdr-support-description = Enable gamescope HDR output. Requires display support
+hdr-support = การรองรับ HDR
+hdr-support-description = เปิดใช้ Gamescope HDR - จำเป็นต้องมีการรองรับหน้าจออย่างถูกต้อง
 
-realtime-scheduler = Realtime scheduler
-realtime-scheduler-description = Use realtime game process scheduling. Improves game performance in cost of slowing down background processes
+realtime-scheduler = ตัวกำหนดเวลาแบบเรียลไทม์
+realtime-scheduler-description = ใช้การกำหนดเวลาของกระบวนการเกมแบบเรียลไทม์ ปรับปรุงประสิทธิภาพของเกมโดยแลกมาด้วยการชะลอตัวของกระบวนการพื้นหลัง
 
-adaptive-sync = Adaptive sync
-adaptive-sync-description = Enable variable refresh rate. Requires display support
+adaptive-sync = Adaptive-Sync
+adaptive-sync-description = เปิดใช้งานอัตราการรีเฟรชที่แปรผัน จำเป็นต้องมีการรองรับหน้าจอ
 
-force-grab-cursor = Force grab cursor
-force-grab-cursor-description = Always use relative mouse mode instead of flipping dependent on cursor visibility. The mouse cursor will correctly be centered in the game
+force-grab-cursor = บังคับจับเคอร์เซอร์
+force-grab-cursor-description = ใช้โหมดเมาส์สัมพัทธ์เสมอแทนการพลิกขึ้นอยู่กับการมองเห็นของเคอร์เซอร์ เคอร์เซอร์เมาส์จะจัดตำแหน่งอยู่ตรงกลางของเกมอย่างถูกต้อง
 
 mangohud = MangoHUD
-mangohud-description = Launch with the mangoapp (mangohud) performance overlay enabled
+mangohud-description = เปิดใช้งาน overlay MangoHUD
 
-extra-args = Extra arguments
-extra-args-description = Extra arguments appended to the gamescope
+extra-args = อาร์กิวเมนต์เพิ่มเติม
+extra-args-description = อาร์กิวเมนต์เพิ่มเติมที่เพิ่มลงใน Gamescope

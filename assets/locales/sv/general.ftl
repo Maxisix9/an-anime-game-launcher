@@ -3,6 +3,8 @@ modern = Modern
 classic = Klassisk
 update-background = Uppdatera bakgrundsbild
 update-background-description = Ladda ner officiell bakgrundsbild för startprogrammet. Du kan inaktivera den för att använda din egna anpassade bild istället
+video-background = Use video background
+video-background-description = Download and display official animated background for the launcher
 
 launcher-language = Språk för starthanterare
 launcher-language-description = Appliceras efter omstart
@@ -24,6 +26,7 @@ chinese = Kinesiska
 migrate-installation = Migrera installation
 migrate-installation-description = Öppna ett speciellt fönster där du kan ändra din spelinstallationsmapp
 repair-game = Reparera spel
+remake-prefix = Remake prefix
 
 status = Status
 

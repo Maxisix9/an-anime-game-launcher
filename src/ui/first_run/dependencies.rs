@@ -1,10 +1,8 @@
 use relm4::prelude::*;
 use adw::prelude::*;
-
 use anime_launcher_sdk::is_available;
 
 use crate::*;
-
 use super::main::FirstRunAppMsg;
 
 pub struct DependenciesApp {
@@ -22,9 +20,9 @@ pub enum DependenciesAppMsg {
 
 #[relm4::component(async, pub)]
 impl SimpleAsyncComponent for DependenciesApp {
+    type Init = ();
     type Input = DependenciesAppMsg;
     type Output = FirstRunAppMsg;
-    type Init = ();
 
     view! {
         adw::PreferencesPage {
@@ -41,7 +39,7 @@ impl SimpleAsyncComponent for DependenciesApp {
 
                 gtk::Label {
                     set_label: &tr!("missing-dependencies-message"),
-    
+
                     set_justify: gtk::Justification::Center,
                     set_wrap: true,
                     set_margin_top: 32
@@ -68,7 +66,7 @@ impl SimpleAsyncComponent for DependenciesApp {
                         },
 
                         gtk::Entry {
-                            set_text: "sudo pacman -Syu git p7zip libwebp-utils",
+                            set_text: "sudo pacman -Syu git p7zip",
                             set_editable: false
                         }
                     },
@@ -85,7 +83,7 @@ impl SimpleAsyncComponent for DependenciesApp {
                         },
 
                         gtk::Entry {
-                            set_text: "sudo apt install git p7zip-full webp",
+                            set_text: "sudo apt install git p7zip-full",
                             set_editable: false
                         }
                     },
@@ -102,7 +100,7 @@ impl SimpleAsyncComponent for DependenciesApp {
                         },
 
                         gtk::Entry {
-                            set_text: "sudo dnf install git p7zip libwebp-tools",
+                            set_text: "sudo dnf install git p7zip",
                             set_editable: false
                         }
                     },
@@ -122,10 +120,6 @@ impl SimpleAsyncComponent for DependenciesApp {
                             adw::ActionRow {
                                 set_title: "p7zip"
                             },
-
-                            adw::ActionRow {
-                                set_title: "libwebp"
-                            }
                         }
                     }
                 }
@@ -134,7 +128,7 @@ impl SimpleAsyncComponent for DependenciesApp {
             add = &adw::PreferencesGroup {
                 set_valign: gtk::Align::Center,
                 set_vexpand: true,
-    
+
                 gtk::Box {
                     set_orientation: gtk::Orientation::Horizontal,
                     set_halign: gtk::Align::Center,
@@ -158,7 +152,11 @@ impl SimpleAsyncComponent for DependenciesApp {
         }
     }
 
-    async fn init(_init: Self::Init, root: Self::Root, _sender: AsyncComponentSender<Self>) -> AsyncComponentParts<Self> {
+    async fn init(
+        _init: Self::Init,
+        root: Self::Root,
+        _sender: AsyncComponentSender<Self>
+    ) -> AsyncComponentParts<Self> {
         let distro = whatadistro::identify();
 
         let mut model = Self {
@@ -184,21 +182,22 @@ impl SimpleAsyncComponent for DependenciesApp {
 
         let widgets = view_output!();
 
-        AsyncComponentParts { model, widgets }
+        AsyncComponentParts {
+            model,
+            widgets
+        }
     }
 
     async fn update(&mut self, msg: Self::Input, sender: AsyncComponentSender<Self>) {
         match msg {
             #[allow(unused_must_use)]
             DependenciesAppMsg::Continue => {
-                let packages = ["git", "dwebp"];
+                let packages = ["git"];
 
                 for package in packages {
                     if !is_available(package) {
                         sender.output(Self::Output::Toast {
-                            title: tr!("package-not-available", {
-                                "package" = package
-                            }),
+                            title: tr!("package-not-available", { "package" = package }),
                             description: None
                         });
 
@@ -209,9 +208,7 @@ impl SimpleAsyncComponent for DependenciesApp {
                 // 7z sometimes has different binaries
                 if !is_available("7z") && !is_available("7za") {
                     sender.output(Self::Output::Toast {
-                        title: tr!("package-not-available", {
-                            "package" = "7z"
-                        }),
+                        title: tr!("package-not-available", { "package" = "7z" }),
                         description: None
                     });
 

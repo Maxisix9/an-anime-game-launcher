@@ -3,6 +3,8 @@ modern = 모던
 classic = 클래식
 update-background = 배경 화면 변경
 update-background-description = 런처용 공식 배경 화면을 다운로드합니다. 대신 사용자 지정 이미지를 사용하도록 비활성화할 수 있습니다.
+video-background = Use video background
+video-background-description = Download and display official animated background for the launcher
 
 launcher-language = 런처 언어
 launcher-language-description = 런처 재시작 후 적용됩니다.
@@ -24,6 +26,7 @@ chinese = 중국어
 migrate-installation = 설치 마이그레이션
 migrate-installation-description = 게임 설치 폴더를 변경할 수 있는 특수 창을 엽니다.
 repair-game = 게임 복구
+remake-prefix = Remake prefix
 
 status = 상태
 

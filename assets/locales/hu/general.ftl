@@ -3,6 +3,8 @@ modern = Modern
 classic = Klasszikus
 update-background = Háttérkép frissítése
 update-background-description = Hivatalos launcher háttérkép letöltése. Kikapcsolással használhatsz egyedi képet helyette.
+video-background = Use video background
+video-background-description = Download and display official animated background for the launcher
 
 launcher-language = Launcher nyelv
 launcher-language-description = Újraindítás után lép életbe
@@ -24,6 +26,7 @@ chinese = Kínai
 migrate-installation = Játékmappa migrálása
 migrate-installation-description = Megnyit egy ablakot amivel megváltoztathatod a játékmappádat
 repair-game = Játék javítása
+remake-prefix = Remake prefix
 
 status = Státusz
 

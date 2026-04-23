@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.19.0] - 2026-04-23
+
+### Added
+
+- Added "Remake prefix" button
+- Added "Import game" button
+- Added support for animated launcher background
+- Added setting to enable Winewayland to make the game use Wayland instead of X11
+- Added a setting to enable "Timeout fix"
+- Added automatic detection and suggestion for the "Timeout fix" setting
+
+### Changed
+
+- Updated Japanese, French and Thai locales
+- Changed sophon download and update backend, introducing performance improvements and various fixes
+
+### Fixed
+
+- Fixed parts of the game update function to handle new files
+- Fixed a panic when the launcher folder is a broken symlink, the launcher will exit with an
+  error message instead
+
+### Removed
+
+- Removed dependency on dwebp/libwebp-utils
+
 ## [3.18.0] - 12.11.2025
 
 ### Fixed
@@ -722,7 +748,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <br>
 
-[unreleased]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.18.0...next
+[unreleased]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.19.0...next
+[3.19.0]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.18.0...3.19.0
 [3.18.0]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.17.0...3.18.0
 [3.17.0]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.16.0...3.17.0
 [3.16.0]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.15.6...3.16.0

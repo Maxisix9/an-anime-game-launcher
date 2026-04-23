@@ -3,6 +3,8 @@ modern = Nowoczesny
 classic = Klasyczny
 update-background = Zaktualizuj obraz tła
 update-background-description = Pobierz oficjalny obraz tła dla launchera. Możesz go wyłączyć, aby użyć własnego obrazu.
+video-background = Use video background
+video-background-description = Download and display official animated background for the launcher
 
 launcher-language = Język launchera
 launcher-language-description = Zostanie zastosowany po ponownym uruchomieniu
@@ -24,6 +26,7 @@ chinese = Chiński
 migrate-installation = Przenieś instalację
 migrate-installation-description = Otwórz specjalne okno, w którym możesz zmienić folder instalacji gry
 repair-game = Napraw grę
+remake-prefix = Remake prefix
 
 status = Status
 

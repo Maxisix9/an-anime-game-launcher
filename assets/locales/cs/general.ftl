@@ -3,6 +3,8 @@ modern = Moderní
 classic = Klasický
 update-background = Aktualizovat tapetu
 update-background-description = Stáhněte si oficiální tapetu pro launcher. Můžete jej zakázat, abyste místo toho použili svůj vlastní obrázek jako tapetu
+video-background = Use video background
+video-background-description = Download and display official animated background for the launcher
 
 launcher-language = Jazyk launcheru
 launcher-language-description = Platí po restartu
@@ -24,6 +26,7 @@ chinese = Čínský
 migrate-installation = Přesunout instalaci
 migrate-installation-description = Otevřete speciální okno, kde můžete změnit instalační složku hry
 repair-game = Opravit hru
+remake-prefix = Remake prefix
 
 status = Stav
 

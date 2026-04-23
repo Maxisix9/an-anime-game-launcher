@@ -3,6 +3,8 @@ modern = Сучасний
 classic = Класичний
 update-background = Оновлювати фонове зображення
 update-background-description = Завантажувати фонове зображення для лаунчера. Ви можете вимкнути це, щоб використовувати власне зображення
+video-background = Use video background
+video-background-description = Download and display official animated background for the launcher
 
 launcher-language = Мова лаунчера
 launcher-language-description = Застосовується після перезапуску
@@ -24,6 +26,7 @@ chinese = Китайська
 migrate-installation = Перенести лаунчер
 migrate-installation-description = Відкрити спеціальне вікно, в якому ви зможете перенести встановлену гру
 repair-game = Відновити гру
+remake-prefix = Remake prefix
 
 status = Статус
 

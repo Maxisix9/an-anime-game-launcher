@@ -18,6 +18,7 @@ about = info
 
 
 close = Zavřít
+enable = Enable
 hide = Schovat
 nothing = Nic
 save = Uložit
@@ -63,9 +64,20 @@ download-wine = Stáhnout Wine
 create-prefix = Vytvořit Wine prefix
 update = Aktualizovat
 download = Stáhnout
+import-game = Import game
 predownload-update = Předbězně stáhnout aktualizaci {$version} ({$size})
 
 kill-game-process = Zabít procesy hry
+
+timeout-fix-detected = Driver error detected
+timeout-fix-detected-description =
+    The game exited within a few seconds and a driver error log was found.
+    This usually means the connection to Genshin Impact's servers timed out.
+
+    Latest Spritz-based Wine runners can work around this via WINE_ENABLE_TIMEOUT_FIX=1.
+    Do you want to enable it?
+
+    You can also toggle this in Preferences -> Enhancements -> Wine.
 
 main-window--patch-unavailable-tooltip = Opravné servery jsou nedostupné a launcher nemůže ověřit stav oprav hry. Hru smíte spustit pouze na vlastní nebezpečí
 main-window--patch-outdated-tooltip = Patch je zastaralý nebo ve stavu přípravy, takže není k dispozici pro použití. Vraťte se později, abyste viděli jeho stav

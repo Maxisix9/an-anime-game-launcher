@@ -1,28 +1,28 @@
-sandbox = Sandbox
-sandbox-description = Run the game in isolated environment, preventing it from accessing your personal data
+sandbox = Bac à sable
+sandbox-description = Lancer le jeu dans un environment isolé, l'empéchant d'accèder à vos informations personels
 
-enable-sandboxing = Enable sandboxing
-enable-sandboxing-description = Run the game in read-only copy of your root filesystem
+enable-sandboxing = Activer le bac à sable
+enable-sandboxing-description = Lancer le jeu dans un environement copié lécture seulement de votre système root
 
 hide-home-directory = Hide home directory
-hide-home-directory-description = Isolate your /home, /var/home/$USER, and $HOME folders from the game
+hide-home-directory-description = Isoler votres dossiers /home, /var/home/$USER, et $HOME du jeu
 
 hostname = Hostname
-additional-arguments = Additional arguments
+additional-arguments = Arguments additionel
 
-private-directories = Private directories
-private-directories-description = These folders will be replaced by an empty virtual filesystem (tmpfs), and their original content will not be available to sandboxed game
+private-directories = Répètoire privés
+private-directories-description = Ces dossies vont être ramplacer par un système de fichier vide (tmpfs), et leurs contenu original ne sera pas disponible au jeu dans le bac à sable
 
 path = Path
 
-shared-directories = Shared directories
+shared-directories = Dossiers partagé
 shared-directories-description = These directories will be symlinked to directories in your host system
 
-original-path = Original path
-new-path = New path
+original-path = Chemin original
+new-path = Nouveau path
 
-read-only = Read-only
-read-only-description = Forbid game to write any data to this directory
+read-only = Lécture seulement
+read-only-description = Empêche le jeu d'écrire des donées dans ce dossier
 
 symlinks = Symlinks
 symlinks-description = Symlink original path to the new one inside of your sandbox
