@@ -128,9 +128,9 @@ pub fn repair_game(sender: ComponentSender<App>, progress_bar_input: Sender<Prog
                 config.launcher.repairer.threads as usize,
                 updater
             );
-        }
 
-        let _ = std::fs::remove_dir_all(repairer_temp);
+            let _ = std::fs::remove_dir_all(repairer.downloading_temp());
+        }
 
         sender.input(AppMsg::SetDownloading(false));
     });
