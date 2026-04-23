@@ -5,6 +5,7 @@
 
 <p align="center">
     <a href="https://discord.gg/ck37X6UWBp">Discord</a> ·
+    <a href="https://zulip.dawn.wine">Zulip</a> ·
     <a href="https://github.com/an-anime-team/an-anime-game-launcher/wiki">Wiki</a>
 </p>
 
