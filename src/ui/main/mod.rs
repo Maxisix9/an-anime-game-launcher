@@ -902,11 +902,11 @@ impl SimpleComponent for App {
                                 Ok(web_cache) => {
                                     let web_cache = String::from_utf8_lossy(&web_cache);
 
-                                    // https://webstatic-sea.[ho-yo-ver-se].com/[ge-nsh-in]/event/e20190909gacha-v2/index.html?......
+                                    // https://gs.[ho-yo-ver-se].com/[ge-nsh-in]/event/e20190909gacha-{hash}/index.html?......
                                     if let Some(url) = web_cache
                                         .lines()
                                         .rev()
-                                        .find(|line| line.contains("gacha-v3/index.html"))
+                                        .find(|line| line.contains("e20190909gacha") && line.contains("/index.html"))
                                     {
                                         let url_begin_pos = url.find("https://").unwrap();
                                         let url_end_pos = url_begin_pos
