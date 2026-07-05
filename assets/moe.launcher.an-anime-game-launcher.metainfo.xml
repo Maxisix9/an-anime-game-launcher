@@ -49,6 +49,12 @@
   </categories>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="3.19.7" date="2026-07-05">
+      <description>
+        <p>Fixed Wish history URL extraction pattern</p>
+        <p>Updated Korean locale</p>
+      </description>
+    </release>
     <release version="3.19.6" date="2026-06-02">
       <description>
         <p>Fixed repair progress reporting</p>

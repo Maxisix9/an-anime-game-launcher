@@ -92,14 +92,13 @@ impl SimpleComponent for AboutDialog {
                 <p>Fixed</p>
 
                 <ul>
-                    <li>Fixed repair progress reporting</li>
-                    <li>Fixed several minor inefficiencies in download/repair</li>
+                    <li>Fixed Wish history URL extraction pattern</li>
                 </ul>
 
                 <p>Changed</p>
 
                 <ul>
-                    <li>Improved repair progress bar by changing the total amount to the amount of files that didn't pass the check</li>
+                    <li>Updated Korean locale</li>
                 </ul>
                 "#
             ].join("\n")
