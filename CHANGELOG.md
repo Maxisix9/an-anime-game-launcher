@@ -805,7 +805,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <br>
 
-[unreleased]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.19.6...next
+[unreleased]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.19.7...next
+[3.19.7]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.19.6...3.19.7
 [3.19.6]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.19.5...3.19.6
 [3.19.5]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.19.4...3.19.5
 [3.19.4]: https://github.com/an-anime-team/an-anime-game-launcher/compare/3.19.3...3.19.4
